@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79B8652BD1B06250CBC19926 /* Pods_FitFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D8A354205E02EBC605FD2D /* Pods_FitFriends.framework */; };
 		8EDF0F322623773E00220551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F312623773E00220551 /* AppDelegate.swift */; };
 		8EDF0F342623773E00220551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F332623773E00220551 /* SceneDelegate.swift */; };
-		8EDF0F362623773E00220551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F352623773E00220551 /* ContentView.swift */; };
+		8EDF0F362623773E00220551 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F352623773E00220551 /* MainPageView.swift */; };
 		8EDF0F382623774100220551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EDF0F372623774100220551 /* Assets.xcassets */; };
 		8EDF0F3B2623774100220551 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EDF0F3A2623774100220551 /* Preview Assets.xcassets */; };
 		8EDF0F3E2623774100220551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDF0F3C2623774100220551 /* LaunchScreen.storyboard */; };
+		8EDF0F4826237A7500220551 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F4726237A7500220551 /* RegistrationPageView.swift */; };
+		8EDF0F4B26237A8B00220551 /* UserPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF0F4A26237A8B00220551 /* UserPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		173DB0362E4BF78B609ACFB8 /* Pods-FitFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitFriends.debug.xcconfig"; path = "Target Support Files/Pods-FitFriends/Pods-FitFriends.debug.xcconfig"; sourceTree = "<group>"; };
+		223FE918C243FEFE9C24B5C2 /* Pods-FitFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitFriends.release.xcconfig"; path = "Target Support Files/Pods-FitFriends/Pods-FitFriends.release.xcconfig"; sourceTree = "<group>"; };
+		51D8A354205E02EBC605FD2D /* Pods_FitFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDF0F2E2623773E00220551 /* FitFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDF0F312623773E00220551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EDF0F332623773E00220551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8EDF0F352623773E00220551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8EDF0F352623773E00220551 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		8EDF0F372623774100220551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EDF0F3A2623774100220551 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8EDF0F3D2623774100220551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EDF0F3F2623774100220551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EDF0F4726237A7500220551 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
+		8EDF0F4A26237A8B00220551 /* UserPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79B8652BD1B06250CBC19926 /* Pods_FitFriends.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1FDBD805369040DCB867A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51D8A354205E02EBC605FD2D /* Pods_FitFriends.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EDF0F252623773E00220551 = {
 			isa = PBXGroup;
 			children = (
 				8EDF0F302623773E00220551 /* FitFriends */,
 				8EDF0F2F2623773E00220551 /* Products */,
+				BF2BC083724F5AD84B9C1BF9 /* Pods */,
+				4A1FDBD805369040DCB867A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +77,9 @@
 			children = (
 				8EDF0F312623773E00220551 /* AppDelegate.swift */,
 				8EDF0F332623773E00220551 /* SceneDelegate.swift */,
-				8EDF0F352623773E00220551 /* ContentView.swift */,
+				8EDF0F352623773E00220551 /* MainPageView.swift */,
+				8EDF0F4726237A7500220551 /* RegistrationPageView.swift */,
+				8EDF0F4A26237A8B00220551 /* UserPageView.swift */,
 				8EDF0F372623774100220551 /* Assets.xcassets */,
 				8EDF0F3C2623774100220551 /* LaunchScreen.storyboard */,
 				8EDF0F3F2623774100220551 /* Info.plist */,
@@ -75,6 +96,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BF2BC083724F5AD84B9C1BF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				173DB0362E4BF78B609ACFB8 /* Pods-FitFriends.debug.xcconfig */,
+				223FE918C243FEFE9C24B5C2 /* Pods-FitFriends.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EDF0F422623774100220551 /* Build configuration list for PBXNativeTarget "FitFriends" */;
 			buildPhases = (
+				510AC2C154C4747EA341927F /* [CP] Check Pods Manifest.lock */,
 				8EDF0F2A2623773E00220551 /* Sources */,
 				8EDF0F2B2623773E00220551 /* Frameworks */,
 				8EDF0F2C2623773E00220551 /* Resources */,
+				6D66D9A286EA1E5AAE7E32C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,14 +173,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		510AC2C154C4747EA341927F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitFriends-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D66D9A286EA1E5AAE7E32C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitFriends/Pods-FitFriends-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitFriends/Pods-FitFriends-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitFriends/Pods-FitFriends-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8EDF0F2A2623773E00220551 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EDF0F4826237A7500220551 /* RegistrationPageView.swift in Sources */,
 				8EDF0F322623773E00220551 /* AppDelegate.swift in Sources */,
+				8EDF0F4B26237A8B00220551 /* UserPageView.swift in Sources */,
 				8EDF0F342623773E00220551 /* SceneDelegate.swift in Sources */,
-				8EDF0F362623773E00220551 /* ContentView.swift in Sources */,
+				8EDF0F362623773E00220551 /* MainPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +360,7 @@
 		};
 		8EDF0F432623774100220551 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 173DB0362E4BF78B609ACFB8 /* Pods-FitFriends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,6 +382,7 @@
 		};
 		8EDF0F442623774100220551 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 223FE918C243FEFE9C24B5C2 /* Pods-FitFriends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
