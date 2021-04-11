@@ -47,7 +47,7 @@ struct Home : View {
 
 
 struct Login : View {
-    @State var color = Color.black.opacity(0.7)
+    @State var color = Color.black.opacity(0.5)
     @State var user = ""
     @State var pass = ""
     @State var visible = false
@@ -74,17 +74,13 @@ struct Login : View {
             //FitFriends logo
                 Image("Logo")
                     .resizable()
-                    .frame(width: 200, height:180)
+                    .frame(width: UIScreen.main.bounds.width/2, height:UIScreen.main.bounds.height/4.5)
                 
-                //horizontal stack holding and new buttons
+                //horizontal stack holding existing and new buttons
                 HStack{
                     
                     //existing button
                     Button(action: {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)){
-                            self.show.toggle()
-                        }
-                        
                     }) {
                         Text("Existing")
                             .foregroundColor(!self.show ? .black : .white)
@@ -97,9 +93,7 @@ struct Login : View {
                     
                     //new button
                     Button(action: {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)){
-                            self.show.toggle()
-                        }
+                        self.show.toggle()
                         
                     }) {
                         Text("New")
@@ -114,6 +108,7 @@ struct Login : View {
                 .background(Color.black.opacity(0.1))
                 .clipShape(Capsule())
                 .padding(.top, 25)
+                
                 VStack{
                     //vertical stack holding all inputs
                     VStack{
@@ -123,7 +118,7 @@ struct Login : View {
                                 .resizable()
                                 .frame(width:16, height: 13)
                                 .foregroundColor(.black)
-                            TextField("Email Address", text: self.$user)
+                            TextField("Email Address", text: self.$user).autocapitalization(.none)
                         }.padding(.vertical, 20)
                         
                         Divider()
@@ -189,7 +184,7 @@ struct Login : View {
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 100)
+                            .frame(width: UIScreen.main.bounds.width / 1.5)
                     }.background(Color.init("Color"))
                     .cornerRadius(8)
                     .offset(y: -40)
@@ -235,7 +230,7 @@ struct ViewError : View {
     var body: some View {
         VStack{
             VStack {
-                HStack{
+                HStack(){
                     Text("Error")
                         .font(.title)
                         .fontWeight(.bold)
@@ -243,12 +238,13 @@ struct ViewError : View {
 
                     Spacer()
                 }
-                .padding(.horizontal, 25)
+                .padding(.top)
+                .padding(.horizontal)
 
                 Text(self.error)
                     .foregroundColor(self.color)
                     .padding(.top)
-                    .padding(.horizontal,25)
+                    .padding(.horizontal)
                     .fixedSize(horizontal: false, vertical: true)
                 Button(action: {
                     self.alert.toggle()
@@ -256,15 +252,16 @@ struct ViewError : View {
                     Text("Cancel")
                         .foregroundColor(.white)
                         .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 120)
+                        .frame(width: UIScreen.main.bounds.width / 1.8)
                 }
                 .background(Color("Color"))
                 .cornerRadius(10)
-                .padding(.top, 25)
+                .padding(.top)
+                .padding(.bottom)
 
             }
             .padding(.vertical,25)
-            .frame(width: UIScreen.main.bounds.width - 30,height: UIScreen.main.bounds.height / 4)
+            .frame(width: UIScreen.main.bounds.width / 1.25,height: UIScreen.main.bounds.height / 3.25)
             .background(Color.white)
             .cornerRadius(15)
             

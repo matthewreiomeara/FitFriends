@@ -10,7 +10,7 @@ import SwiftyJSON
 import Foundation
 
 struct RegistrationPageView: View {
-        @State var color = Color.black.opacity(0.7)
+        @State var color = Color.black.opacity(0.5)
         @State var user = ""
         @State var pass = ""
         @State var email = ""
@@ -31,17 +31,13 @@ struct RegistrationPageView: View {
                 //FitFriends logo
                 Image("Logo")
                     .resizable()
-                    .frame(width: 200, height:180)
+                    .frame(width: UIScreen.main.bounds.width/2, height:UIScreen.main.bounds.height/4.5)
                 
                 //horizontal stack holding and new buttons
                 HStack{
-                    
                     //existing button
                     Button(action: {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)){
-                            self.show.toggle()
-                        }
-
+                        self.show.toggle()
                     }) {
                         Text("Existing")
                             .foregroundColor(!self.show ? .black : .white)
@@ -54,10 +50,6 @@ struct RegistrationPageView: View {
                     
                     //new button
                     Button(action: {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)){
-                            self.show.toggle()
-                        }
-                        
                     }) {
                         Text("New")
                             .foregroundColor(self.show ? .black : .white)
@@ -80,7 +72,7 @@ struct RegistrationPageView: View {
                                     .resizable()
                                     .frame(width:16, height:13)
                                     .foregroundColor(.black)
-                                TextField("Enter Username", text: self.$user)
+                                TextField("Enter Username", text: self.$user).autocapitalization(.none)
                             }.padding(.vertical, 10)
                             
                             Divider()
@@ -90,7 +82,7 @@ struct RegistrationPageView: View {
                                     .resizable()
                                     .frame(width:16, height:13)
                                     .foregroundColor(.black)
-                                TextField("Enter Email Address", text: self.$email)
+                                TextField("Enter Email Address", text: self.$email).autocapitalization(.none)
                             }.padding(.vertical, 10)
                             
                             Divider()
@@ -104,7 +96,7 @@ struct RegistrationPageView: View {
                                 if self.visible1{
                                     TextField("Password", text: self.$pass).autocapitalization(.none)
                                 } else {
-                                    SecureField("Password", text: self.$pass)
+                                    SecureField("Password", text: self.$pass).autocapitalization(.none)
                                 }
                                 Button(action: {
                                     self.visible1.toggle()
@@ -125,7 +117,7 @@ struct RegistrationPageView: View {
                                 if self.visible2{
                                     TextField("Re-Enter Password", text: self.$retypePass).autocapitalization(.none)
                                 } else {
-                                    SecureField("Re-Enter Password", text: self.$retypePass)
+                                    SecureField("Re-Enter Password", text: self.$retypePass).autocapitalization(.none)
                                 }
                                 Button(action: {
                                     self.visible2.toggle()
