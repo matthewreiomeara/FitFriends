@@ -57,6 +57,7 @@ struct Login : View {
     @State var error = ""
     @State var loading = false
     @State var token = ""
+    @State var name = ""
     let myGroup = DispatchGroup()
 
     var body :some View{
@@ -153,6 +154,7 @@ struct Login : View {
                     .cornerRadius(10)
                     .padding(.top,25)
                     
+//========================================================
                     //button for login
                     Button(action: {
                         checkInputs()
@@ -160,14 +162,17 @@ struct Login : View {
                         tryLogin(self.user, self.pass) { response in
                              // Do your stuff here
                             //self.token = "Bearer " + response
-                            self.token = response
+                            let dict = response
+                            self.token = dict["token"]!
+                            self.name = dict["name"]!
                              myGroup.leave()
                          }
                          
                         // Waits for request to finish
                         myGroup.notify(queue: .main) {
                             //if successfull, toggle loading, wait 2 seconds and direct to user page
-                            if token.contains("Success"){
+                            if token != "error"{
+                                token = "Bearer " + token
                                 withAnimation {
                                     self.loading.toggle()
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -179,6 +184,7 @@ struct Login : View {
                                 self.alert.toggle()
                             }
                          }
+//==============================================
                     }){
                         Text("LOGIN")
                             .foregroundColor(.white)
@@ -371,7 +377,7 @@ func isValidPassword(_ password: String) -> Int {
     }
 }
 
-func tryLogin(_ email: String, _ password: String,_ completion: @escaping (String) -> Void){
+func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([String:String]) -> Void){
     //---------------------------------------------------------------------------
     //Login Request
     //Only runs if the entered email and password are valid
@@ -380,7 +386,9 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping (Strin
     var params = ["email": "", "password": ""]
 
     var token = ""
-
+    var name = ""
+    
+    var dict = ["token": "", "name": ""]
     
     if ( isValidEmail(email) && isValidPassword(password) == 0)
     {
@@ -413,13 +421,17 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping (Strin
                             //IMPORTANT identifies user for later use
                             //token = json["Token"].rawString() ?? ""
                             token = json["message"].string ?? ""
-                            completion(token)
+                            name = json["data"]["name"].string ?? ""
+                            dict["token"] = token
+                            dict["name"] = name
+                            completion(dict)
                             //You can send them to the user page at this point
                         }
                         else
                         {
-                            //prints string attached to message such as no user found
-                            print(json["error"])
+                            token = "error"
+                            dict["token"] = token
+                            completion(dict)
                         }
                     }
                 }
