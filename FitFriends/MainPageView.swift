@@ -11,6 +11,8 @@ import SwiftyJSON
 import Foundation
 
 
+var token = ""
+
 struct MainPageView: View {
     var body: some View {
             Home()
@@ -56,7 +58,6 @@ struct Login : View {
     @State var alert = false
     @State var error = ""
     @State var loading = false
-    @State var token = ""
     @State var name = ""
     let myGroup = DispatchGroup()
 
@@ -163,7 +164,7 @@ struct Login : View {
                              // Do your stuff here
                             //self.token = "Bearer " + response
                             let dict = response
-                            self.token = dict["token"]!
+                            token = dict["token"]!
                             self.name = dict["name"]!
                              myGroup.leave()
                          }
@@ -173,6 +174,27 @@ struct Login : View {
                             //if successfull, toggle loading, wait 2 seconds and direct to user page
                             if token != "error"{
                                 token = "Bearer " + token
+                                
+                                let entryGroup = DispatchGroup()
+                                var message = ""
+                                entryGroup.enter()
+                                callNewEntry(token){ response in
+                                    // Do your stuff here
+                                   //self.token = "Bearer " + response
+                                    let dict = response
+                                    message = dict["error"]!
+                                    entryGroup.leave()
+                                }
+                                entryGroup.notify(queue: .main){
+                                    if(message != "error")
+                                    {
+                                        print("NEW ENTRY ADDED")
+                                    }
+                                    else{
+                                        print("Error occured")
+                                    }
+                                }
+                                
                                 withAnimation {
                                     self.loading.toggle()
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -420,7 +442,7 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([Stri
                             //print(json["message"])
                             //IMPORTANT identifies user for later use
                             //token = json["Token"].rawString() ?? ""
-                            token = json["message"].string ?? ""
+                            token = json["Token"].string ?? ""
                             name = json["data"]["name"].string ?? ""
                             dict["token"] = token
                             dict["name"] = name

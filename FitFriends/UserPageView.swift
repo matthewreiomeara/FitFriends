@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+
+var text1 = curDate.string(from: Date())
+//Formats Date for URL Request
+var curDate: DateFormatter  {
+    //Formats the current date
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter
+}
+
 struct UserPageView: View {
     //this exerciselist gets added to once users pick and add an exercise from ExerciseListView
     @EnvironmentObject var exerciselist: Exercise
@@ -23,6 +33,12 @@ struct UserPageView: View {
     var formatDate: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
+        return formatter
+    }
+    //Formats Date for URL Request
+    var stringDate: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }
     
@@ -47,6 +63,8 @@ struct UserPageView: View {
                             .onTapGesture {
                                 withAnimation {
                                     self.isDateShown.toggle()
+                                    text1 = stringDate.string(from: selectedDate)
+                                    print("DATE: " + text1)
                                 }
                             }
                         //image under date to hint to user that the date can be changed via pressing
