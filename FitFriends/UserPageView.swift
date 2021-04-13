@@ -104,19 +104,30 @@ struct UserPageView: View {
                                 Text(item.name).foregroundColor(.white)
                                 Spacer()
                                 VStack(alignment: .leading){
-                                    Text("Lbs:\(item.weight)").foregroundColor(.white)
-                                    Text("Reps:\(item.reps)").foregroundColor(.white)
-                                    Text("Sets:\(item.sets)").foregroundColor(.white)
+                                    Text("Lbs: \(item.weight)")
+                                        .frame(width:75,height:20)
+                                        .background(Color("Color"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(3)
+                                        .padding(.bottom,1)
+                                    Text("Reps:\(item.reps)")                     .frame(width:75,height:20)
+                                        .background(Color("Color"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(3)
+                                        .padding(.bottom,1)
+                                    Text("Sets:\(item.sets)")
+                                        .frame(width:75,height:20)
+                                        .background(Color("Color"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(3)
+                                        .padding(.bottom,1)
                                 }
                                 Image(systemName: "chevron.left.2")
                                     .foregroundColor(.white)
                             }.listRowBackground(Color("Color2"))
-                            
-                            //.frame(width: UIScreen.main.bounds.width)
                         }
                         .onDelete(perform: deleteExercise)
-                        //.frame(width: UIScreen.main.bounds.width)
-                    }.frame(maxWidth:.infinity)
+                    }//.frame(maxWidth:.infinity)
                 }
                 
                 //Navigation bar on top showing image of stack of people and a single person that will eventually display current rolemodel and user data

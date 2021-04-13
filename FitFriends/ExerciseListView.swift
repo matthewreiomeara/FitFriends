@@ -443,6 +443,7 @@ struct chestExerciseDetail: View {
                 exerciselist.add(exercise: exerciseID)
             }
             .font(.headline)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             
         }
         .navigationTitle(exercise.exerciseName)
