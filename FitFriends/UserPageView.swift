@@ -82,9 +82,9 @@ struct UserPageView: View {
                             .navigationTitle("Main")
                             .navigationBarTitleDisplayMode(.inline)
                             //.navigationBarHidden(true)
-                            .frame(width: 0, height: 0)
-                            .hidden()
-                            .disabled(true)
+//                            .frame(width: 0, height: 0)
+//                            .hidden()
+//                            .disabled(true)
                             
                             Spacer()
 
