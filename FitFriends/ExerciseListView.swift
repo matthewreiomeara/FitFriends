@@ -379,6 +379,7 @@ struct chestExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: chestExercises
     var body: some View {
         let id = exercise.id
@@ -398,7 +399,7 @@ struct chestExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -413,7 +414,8 @@ struct chestExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -428,7 +430,7 @@ struct chestExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -438,11 +440,19 @@ struct chestExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             
         }
@@ -463,6 +473,7 @@ struct tricepExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: tricepExercises
     var body: some View {
         VStack{
@@ -482,7 +493,7 @@ struct tricepExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -497,7 +508,8 @@ struct tricepExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -512,7 +524,7 @@ struct tricepExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -522,11 +534,20 @@ struct tricepExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -545,6 +566,7 @@ struct backExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: backExercises
     var body: some View {
         VStack{
@@ -564,7 +586,7 @@ struct backExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -579,7 +601,8 @@ struct backExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -594,7 +617,7 @@ struct backExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -604,11 +627,20 @@ struct backExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -627,6 +659,7 @@ struct bicepExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: bicepExercises
     var body: some View {
         VStack{
@@ -646,7 +679,7 @@ struct bicepExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -661,7 +694,8 @@ struct bicepExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -676,7 +710,7 @@ struct bicepExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -686,11 +720,20 @@ struct bicepExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -709,6 +752,7 @@ struct shoulderExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: shoulderExercises
     var body: some View {
         VStack{
@@ -728,7 +772,7 @@ struct shoulderExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -743,7 +787,8 @@ struct shoulderExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -758,7 +803,7 @@ struct shoulderExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -768,11 +813,20 @@ struct shoulderExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -791,6 +845,7 @@ struct quadExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: quadExercises
     var body: some View {
         VStack{
@@ -810,7 +865,7 @@ struct quadExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -825,7 +880,8 @@ struct quadExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -840,7 +896,7 @@ struct quadExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -850,11 +906,20 @@ struct quadExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -873,6 +938,7 @@ struct hamstringExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: hamstringExercises
     var body: some View {
         VStack{
@@ -892,7 +958,7 @@ struct hamstringExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -907,7 +973,8 @@ struct hamstringExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -922,7 +989,7 @@ struct hamstringExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -932,11 +999,20 @@ struct hamstringExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationBarTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -955,6 +1031,7 @@ struct calfExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: calfExercises
     var body: some View {
         VStack{
@@ -974,7 +1051,7 @@ struct calfExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -989,7 +1066,8 @@ struct calfExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1004,7 +1082,7 @@ struct calfExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1014,11 +1092,20 @@ struct calfExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1037,6 +1124,7 @@ struct abdominalExerciseDetail: View {
     @State var weight = ""
     @State var reps = ""
     @State var sets = ""
+    @State var addedExercise = false
     let exercise: abdominalExercises
     var body: some View {
         VStack{
@@ -1056,7 +1144,7 @@ struct abdominalExerciseDetail: View {
                     .background(Color("Color"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
-                    .padding(.leading,10)
+                    .padding(.leading,15)
                 TextField("0", text: self.$weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -1071,7 +1159,8 @@ struct abdominalExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(2)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
                 TextField("0", text: self.$reps)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1086,7 +1175,7 @@ struct abdominalExerciseDetail: View {
                     .frame(width:75,height:50)
                     .background(Color("Color"))
                     .foregroundColor(.white)
-                    .cornerRadius(3)
+                    .cornerRadius(5)
                 TextField("0", text: self.$sets)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1096,11 +1185,20 @@ struct abdominalExerciseDetail: View {
                         }
                     }
 
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
             }
             .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
