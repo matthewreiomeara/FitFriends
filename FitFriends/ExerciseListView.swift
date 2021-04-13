@@ -392,7 +392,7 @@ struct chestExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -475,7 +475,7 @@ struct tricepExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -557,7 +557,7 @@ struct backExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -639,7 +639,7 @@ struct bicepExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -721,7 +721,7 @@ struct shoulderExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -803,7 +803,7 @@ struct quadExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -885,7 +885,7 @@ struct hamstringExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -967,7 +967,7 @@ struct calfExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))
@@ -1049,7 +1049,7 @@ struct abdominalExerciseDetail: View {
                 .resizable()
                 .scaledToFit()
             HStack{
-                Text("Weight:")
+                Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
                     .background(Color("Color"))

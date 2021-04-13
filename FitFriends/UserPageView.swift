@@ -103,9 +103,11 @@ struct UserPageView: View {
                             HStack{
                                 Text(item.name).foregroundColor(.white)
                                 Spacer()
-                                Text("Weight:\(item.weight)").foregroundColor(.white)
-                                Text("Reps:\(item.reps)").foregroundColor(.white)
-                                Text("Sets:\(item.sets)").foregroundColor(.white)
+                                VStack(alignment: .leading){
+                                    Text("Lbs:\(item.weight)").foregroundColor(.white)
+                                    Text("Reps:\(item.reps)").foregroundColor(.white)
+                                    Text("Sets:\(item.sets)").foregroundColor(.white)
+                                }
                                 Image(systemName: "chevron.left.2")
                                     .foregroundColor(.white)
                             }.listRowBackground(Color("Color2"))
