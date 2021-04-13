@@ -444,6 +444,19 @@ struct chestExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -538,6 +551,19 @@ struct tricepExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -631,6 +657,19 @@ struct backExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -724,6 +763,19 @@ struct bicepExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -817,6 +869,19 @@ struct shoulderExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -1003,6 +1068,20 @@ struct hamstringExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                //add excercise
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
@@ -1096,6 +1175,20 @@ struct calfExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    message = response
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message)
+                }
+                
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
