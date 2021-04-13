@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//will eventually display a list like exerciselist but with different rolemodels and their exercise plans
 struct RoleModelView: View {
     var body: some View {
         NavigationView {

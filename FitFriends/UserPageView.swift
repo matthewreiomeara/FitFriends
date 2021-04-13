@@ -8,50 +8,60 @@
 import SwiftUI
 
 struct UserPageView: View {
+    //this exerciselist gets added to once users pick and add an exercise from ExerciseListView
     @EnvironmentObject var exerciselist: Exercise
+    //navigation to exerciselistview
     @State var addExercise = false
+    //navigation to userprofileview
     @State var showUserProfileView = false
+    //navigation to rolemodelview
     @State var showRoleModelView = false
+    //variable holding current date/date chosen by user
     @State var selectedDate = Date()
     @State var isDateShown = false
+    //formats date for UI purposes
     var formatDate: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         return formatter
     }
+    
     let backgroundCol = UIColor(red: 0/255, green: 96/255,blue: 6/255, alpha: 1.0)
     init() {
         UITableView.appearance().backgroundColor = backgroundCol
-        
     }
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
-                    //Spacer()
                     VStack{
+                        //grabs string from formatDate and assigns to text
                         let text: String =  formatDate.string(from: selectedDate)
+                        //displays date
                         Text(text).font(.title)
                             .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/10)
                             .background(Color("Color2"))
                             .foregroundColor(.white)
                             .padding(.bottom,-10)
+                            //if date is clicked then wheel allowing user to pick date is shown
                             .onTapGesture {
                                 withAnimation {
                                     self.isDateShown.toggle()
                                 }
                             }
+                        //image under date to hint to user that the date can be changed via pressing
                         Image(systemName: "chevron.compact.down")
                             .font(.system(size:35,weight:.light))
                             .foregroundColor(.white)
                             .padding(.top,-20)
-                        
+                        //once date is clicked, date wheel is displayed
                         if(isDateShown) {
                             DatePicker("",selection: $selectedDate,in: ...Date(),displayedComponents: .date)
                                 .labelsHidden()
                                 .datePickerStyle(WheelDatePickerStyle())
                         }
-                    }//.padding(.bottom,1)
+                    }
+                    //Two stacks that will eventually hold calories and rolemodel displays
                     VStack{
                         HStack {
                             Text("Add Calories").foregroundColor(.white)
@@ -61,10 +71,12 @@ struct UserPageView: View {
                     }.background(Color("Color"))
                     .padding(.bottom,-10)
 
+                    //list displaying exercise title and exercises to be added
                     List {
                         HStack {
                             Text("Exercises").font(.system(size: 25, weight: .bold))
                                 .foregroundColor(.white)
+                            //navigation link that sends users to ExerciseListView once the "plus" button is pressed
                             NavigationLink(destination: ExerciseListView(), isActive: $addExercise) {
                             }
                             .navigationTitle("Main")
@@ -86,6 +98,7 @@ struct UserPageView: View {
                                 }.buttonStyle(BorderlessButtonStyle())
                         }.listRowBackground(Color("Color2"))
                         
+                        //grabs exercises and displays them with the option of deleting via sliding to the left
                         ForEach(exerciselist.items) { item in
                             HStack{
                                 Text(item.name).foregroundColor(.white)
@@ -97,6 +110,8 @@ struct UserPageView: View {
                         .onDelete(perform: deleteExercise)
                     }
                 }
+                
+                //Navigation bar on top showing image of stack of people and a single person that will eventually display current rolemodel and user data
                 //.navigationBarTitle("")
                 //.navigationBarHidden(true)
                 .navigationBarTitle("Main", displayMode: .inline)

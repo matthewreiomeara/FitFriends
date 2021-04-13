@@ -90,8 +90,14 @@ struct ExerciseListView: View {
     
     var body: some View {
         //NavigationView {
+        
+        //list view displays all exercises along with pictures and names
             List {
+                //two groups are required in order to fit more than 10 items in view
                 Group {
+                    //each HStack holds musclegroup name and rows displaying different exercises
+                    
+                    //chest HStack
                     HStack{
                     Text("Chest").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -99,12 +105,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each chestExcerise and formats to a row
                     ForEach(Chest, id: \.id) {chestExercises in
                         NavigationLink(destination: chestExerciseDetail(exercise: chestExercises)) {
                             ChestExerciseRow(exercise: chestExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //tricep HStack
                     HStack{
                     Text("Triceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -112,12 +120,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each tricepExcerise and formats to a row
                     ForEach(Triceps, id: \.id) {tricepExercises in
                         NavigationLink(destination: tricepExerciseDetail(exercise: tricepExercises)) {
                             TricepExerciseRow(exercise: tricepExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //back HStack
                     HStack{
                     Text("Back").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -125,12 +135,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each backExcerise and formats to a row
                     ForEach(Back, id: \.id) {backExercises in
                         NavigationLink(destination: backExerciseDetail(exercise: backExercises)) {
                             BackExerciseRow(exercise: backExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //bicep HStack
                     HStack{
                     Text("Biceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -138,6 +150,7 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each bicepExcerise and formats to a row
                     ForEach(Biceps, id: \.id) {bicepExercises in
                         NavigationLink(destination: bicepExerciseDetail(exercise: bicepExercises)) {
                             BicepExerciseRow(exercise: bicepExercises)
@@ -145,8 +158,10 @@ struct ExerciseListView: View {
                     }//.listRowBackground(Color("Color2"))
                 }
                 
+                //second group holding rest of HStacks
                 Group {
                     
+                    //shoulder HStack
                     HStack{
                     Text("Shoulders").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -154,12 +169,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each shoulderExcerise and formats to a row
                     ForEach(Shoulders, id: \.id) {shoulderExercises in
                         NavigationLink(destination: shoulderExerciseDetail(exercise: shoulderExercises)) {
                             ShoulderExerciseRow(exercise: shoulderExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //quad HStack
                     HStack{
                     Text("Quadriceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -167,12 +184,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each quadExcerise and formats to a row
                     ForEach(Quads, id: \.id) {quadExercises in
                         NavigationLink(destination: quadExerciseDetail(exercise: quadExercises)) {
                             QuadricepExerciseRow(exercise: quadExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //hamstring HStack
                     HStack{
                     Text("Hamstrings").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -180,12 +199,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each hamstringExcerise and formats to a row
                     ForEach(Hamstrings, id: \.id) {hamstringExercises in
                         NavigationLink(destination: hamstringExerciseDetail(exercise: hamstringExercises)) {
                             HamstringExerciseRow(exercise: hamstringExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //calf HStack
                     HStack{
                     Text("Calves").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -193,12 +214,14 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each calfExcerise and formats to a row
                     ForEach(Calves, id: \.id){calfExercises in
                         NavigationLink(destination: calfExerciseDetail(exercise: calfExercises)) {
                             CalfExerciseRow(exercise: calfExercises)
                         }
                     }//.listRowBackground(Color("Color2"))
                     
+                    //abdominals HStack
                     HStack{
                     Text("Abdominals").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
@@ -206,6 +229,7 @@ struct ExerciseListView: View {
                     .foregroundColor(.white)
                     .padding(.leading,-20)
                     
+                    //grabs each abExcerise and formats to a row
                     ForEach(Abs, id: \.id) {abdominalExercises in
                         NavigationLink(destination: abdominalExerciseDetail(exercise: abdominalExercises)) {
                             AbdominalExerciseRow(exercise: abdominalExercises)
@@ -223,6 +247,7 @@ struct ExerciseListView_Previews: PreviewProvider {
         ExerciseListView()
     }
 }
+//row display for chest
 struct ChestExerciseRow: View {
     let exercise: chestExercises
     var body: some View {
@@ -235,6 +260,7 @@ struct ChestExerciseRow: View {
         }.padding(.init(top: 5, leading: -15, bottom: 5, trailing: 0))
     }
 }
+//row display for triceps
 struct TricepExerciseRow: View {
     let exercise: tricepExercises
     var body: some View {
@@ -249,6 +275,7 @@ struct TricepExerciseRow: View {
         
     }
 }
+//row display for back
 struct BackExerciseRow: View {
     let exercise: backExercises
     var body: some View {
@@ -261,6 +288,7 @@ struct BackExerciseRow: View {
         }.padding(.init(top: 5, leading: -15, bottom: 5, trailing: 0))
     }
 }
+//row display for biceps
 struct BicepExerciseRow: View {
     let exercise: bicepExercises
     var body: some View {
@@ -273,6 +301,7 @@ struct BicepExerciseRow: View {
         }.padding(.init(top: 5, leading: -15, bottom: 5, trailing: 0))
     }
 }
+//row display for shoulders
 struct ShoulderExerciseRow: View {
     let exercise: shoulderExercises
     var body: some View {
@@ -285,6 +314,7 @@ struct ShoulderExerciseRow: View {
         }.padding(.init(top: 5, leading: -15, bottom: 5, trailing: 0))
     }
 }
+//row display for quads
 struct QuadricepExerciseRow: View {
     let exercise: quadExercises
     var body: some View {
@@ -297,6 +327,7 @@ struct QuadricepExerciseRow: View {
         }.padding(.init(top: 10, leading: -15, bottom: 10, trailing: 0))
     }
 }
+//row display for hamstrings
 struct HamstringExerciseRow: View {
     let exercise: hamstringExercises
     var body: some View {
@@ -309,6 +340,7 @@ struct HamstringExerciseRow: View {
         }.padding(.init(top: 10, leading: -15, bottom: 10, trailing: 0))
     }
 }
+//row display for calves
 struct CalfExerciseRow: View {
     let exercise: calfExercises
     var body: some View {
@@ -321,6 +353,7 @@ struct CalfExerciseRow: View {
         }.padding(.init(top: 10, leading: -15, bottom: 10, trailing: 0))
     }
 }
+//row display for abdominals
 struct AbdominalExerciseRow: View {
     let exercise: abdominalExercises
     var body: some View {
@@ -339,6 +372,7 @@ struct chestExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when chest exercise is chosen
 struct chestExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: chestExercises
@@ -366,6 +400,7 @@ struct tricepExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when tricep exercise is chosen
 struct tricepExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: tricepExercises
@@ -393,6 +428,7 @@ struct backExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when back exercise is chosen
 struct backExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: backExercises
@@ -420,6 +456,7 @@ struct bicepExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when bicep exercise is chosen
 struct bicepExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: bicepExercises
@@ -447,6 +484,7 @@ struct shoulderExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when shoulder exercise is chosen
 struct shoulderExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: shoulderExercises
@@ -474,6 +512,7 @@ struct quadExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when quad exercise is chosen
 struct quadExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: quadExercises
@@ -501,6 +540,7 @@ struct hamstringExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when hamstring exercise is chosen
 struct hamstringExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: hamstringExercises
@@ -528,6 +568,7 @@ struct calfExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when calf exercise is chosen
 struct calfExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: calfExercises
@@ -555,6 +596,7 @@ struct abdominalExercises: Identifiable{
     let exerciseName: String
     let imageName: String
 }
+//detailView when abdominal exercise is chosen
 struct abdominalExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
     let exercise: abdominalExercises

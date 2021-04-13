@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//will eventually show user details 
 struct UserProfileView: View {
     var body: some View {
         NavigationView {
