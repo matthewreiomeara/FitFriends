@@ -103,12 +103,18 @@ struct UserPageView: View {
                             HStack{
                                 Text(item.name).foregroundColor(.white)
                                 Spacer()
+                                Text("Weight:\(item.weight)").foregroundColor(.white)
+                                Text("Reps:\(item.reps)").foregroundColor(.white)
+                                Text("Sets:\(item.sets)").foregroundColor(.white)
                                 Image(systemName: "chevron.left.2")
                                     .foregroundColor(.white)
                             }.listRowBackground(Color("Color2"))
+                            
+                            //.frame(width: UIScreen.main.bounds.width)
                         }
                         .onDelete(perform: deleteExercise)
-                    }
+                        //.frame(width: UIScreen.main.bounds.width)
+                    }.frame(maxWidth:.infinity)
                 }
                 
                 //Navigation bar on top showing image of stack of people and a single person that will eventually display current rolemodel and user data
@@ -155,6 +161,9 @@ struct UserPageView: View {
 struct exerciseItem: Equatable, Identifiable {
     var id: Int
     var name: String
+    var weight: String
+    var reps: String
+    var sets: String
 }
 class Exercise: ObservableObject {
     @Published var items = [exerciseItem]()

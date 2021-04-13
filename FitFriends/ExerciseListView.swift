@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ExerciseListView: View {
     let Chest: [chestExercises] = [
@@ -375,19 +376,74 @@ struct chestExercises: Identifiable{
 //detailView when chest exercise is chosen
 struct chestExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: chestExercises
     var body: some View {
         let id = exercise.id
         let exerciseName = exercise.exerciseName
-        let exerciseID = exerciseItem(id: id,name: exerciseName)
+        var exerciseWeight = weight
+        var exerciseReps = reps
+        var exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
         VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
             .font(.headline)
+            
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -403,15 +459,69 @@ struct tricepExercises: Identifiable{
 //detailView when tricep exercise is chosen
 struct tricepExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: tricepExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -431,15 +541,69 @@ struct backExercises: Identifiable{
 //detailView when back exercise is chosen
 struct backExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: backExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -459,15 +623,69 @@ struct bicepExercises: Identifiable{
 //detailView when bicep exercise is chosen
 struct bicepExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: bicepExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -487,15 +705,69 @@ struct shoulderExercises: Identifiable{
 //detailView when shoulder exercise is chosen
 struct shoulderExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: shoulderExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -515,15 +787,69 @@ struct quadExercises: Identifiable{
 //detailView when quad exercise is chosen
 struct quadExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: quadExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -543,15 +869,69 @@ struct hamstringExercises: Identifiable{
 //detailView when hamstring exercise is chosen
 struct hamstringExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: hamstringExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -571,15 +951,69 @@ struct calfExercises: Identifiable{
 //detailView when calf exercise is chosen
 struct calfExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: calfExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -599,15 +1033,69 @@ struct abdominalExercises: Identifiable{
 //detailView when abdominal exercise is chosen
 struct abdominalExerciseDetail: View {
     @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
     let exercise: abdominalExercises
     var body: some View {
         VStack{
             let id = exercise.id
             let exerciseName = exercise.exerciseName
-            let exerciseID = exerciseItem(id: id,name: exerciseName)
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
+            HStack{
+                Text("Weight:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,10)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(2)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(3)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }
             Button("Add Exercise") {
                 exerciselist.add(exercise: exerciseID)
             }
@@ -617,3 +1105,4 @@ struct abdominalExerciseDetail: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
