@@ -170,7 +170,7 @@ func addNewExercise(_ token: String,_ amount: Int,_ description: String,_ sets: 
 
 //===========================Add OLD Exercise================================
 //Sets the calories for today's date
-func addOldExercise(_ token: String,_ date: String, _ amount: Int,_ description: String,_ sets: Int,_ reps: Int, _ completion: @escaping (String) -> Void)
+func addOldExercise(_ token: String,_ date: String, _ amount: Int,_ description: String,_ sets: Int,_ reps: Int, _ completion: @escaping ([String : Any]) -> Void)
 {
     //URL with endpoint to sent to
     let url = "https://fit-friends.herokuapp.com/api/user/info/addExercises"
@@ -184,15 +184,14 @@ func addOldExercise(_ token: String,_ date: String, _ amount: Int,_ description:
     params["sets"] = sets
     params["reps"] = reps
     
+    var retParam = ["message": "error", "e_id": 0] as [String : Any]
+    
     
     //Headers for the request with the token
     let headers: HTTPHeaders = [
         "Content-Type": "application/json",
         "Authorization": token
     ]
-    
-    //data to grab from request
-    var message = "error"
     
     //Requests at (fitfriends, POST, data to go in, JSON format)
     AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers) .responseJSON
@@ -201,17 +200,26 @@ func addOldExercise(_ token: String,_ date: String, _ amount: Int,_ description:
            switch response.result {
                 //If succesfully reaches site
                 case .success(_):
-                    //On success prints corresponding values
-                   if (response.response?.statusCode == 200)
-                   {
-                        message = "Success"
                     
-                        completion(message)
-                   }
-                   else
-                   {
-                        completion(message);
-                   }
+                    //shortens to data
+                    if let data = response.data
+                    {
+                        //shortens to json
+                        if let json = try? JSON(data: data)
+                        {
+                            //On success prints corresponding values
+                            if (response.response?.statusCode == 200)
+                            {
+                                retParam["message"] = "Success"
+                                retParam["e_id"] = json["e_id"].rawString() ??  ""
+                                completion(retParam)
+                            }
+                            else
+                            {
+                                completion(retParam);
+                            }
+                        }
+                    }
                     break
            case .failure(_):
             print("INVALID URL")

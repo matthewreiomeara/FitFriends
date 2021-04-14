@@ -380,9 +380,10 @@ struct chestExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: chestExercises
     var body: some View {
-        let id = exercise.id
+        var id = exercise.id
         let exerciseName = exercise.exerciseName
         var exerciseWeight = weight
         var exerciseReps = reps
@@ -450,12 +451,15 @@ struct chestExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -466,9 +470,7 @@ struct chestExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
             
         }
         .navigationTitle(exercise.exerciseName)
@@ -489,10 +491,11 @@ struct tricepExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: tricepExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -559,12 +562,15 @@ struct tricepExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -575,9 +581,7 @@ struct tricepExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -597,10 +601,11 @@ struct backExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: backExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -667,12 +672,15 @@ struct backExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -683,9 +691,7 @@ struct backExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -705,10 +711,11 @@ struct bicepExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: bicepExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -775,12 +782,15 @@ struct bicepExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -791,9 +801,7 @@ struct bicepExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -813,10 +821,11 @@ struct shoulderExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: shoulderExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -883,12 +892,15 @@ struct shoulderExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -899,9 +911,7 @@ struct shoulderExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -921,105 +931,11 @@ struct quadExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: quadExercises
     var body: some View {
         VStack{
-            let id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-            Image(exercise.imageName)
-                .resizable()
-                .scaledToFit()
-            HStack{
-                Text("Lbs:")
-                    .bold()
-                    .frame(width:75,height:50)
-                    .background(Color("Color"))
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    .padding(.leading,15)
-                TextField("0", text: self.$weight)
-                    .keyboardType(.numberPad)
-                    .onReceive(Just(weight)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
-                        if filtered != newValue {
-                            self.weight = filtered
-                        }
-                    }
-
-                Text("Reps:")
-                    .bold()
-                    .frame(width:75,height:50)
-                    .background(Color("Color"))
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    .padding(.leading,15)
-                TextField("0", text: self.$reps)
-                    .keyboardType(.numberPad)
-                    .onReceive(Just(reps)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
-                        if filtered != newValue {
-                            self.reps = filtered
-                        }
-                    }
-
-                Text("Sets:")
-                    .bold()
-                    .frame(width:75,height:50)
-                    .background(Color("Color"))
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                TextField("0", text: self.$sets)
-                    .keyboardType(.numberPad)
-                    .onReceive(Just(sets)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
-                        if filtered != newValue {
-                            self.sets = filtered
-                        }
-                    }
-
-            }.padding(.bottom,10)
-            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
-            }
-            Button("Add Exercise") {
-                exerciselist.add(exercise: exerciseID)
-                self.addedExercise.toggle()
-            }
-            .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
-            .foregroundColor(.white)
-            .background(Color("Color"))
-            .cornerRadius(5)
-            .padding(.leading,-10)
-            .padding(.bottom,10)
-            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-
-struct hamstringExercises: Identifiable{
-    var id: Int
-    let exerciseName: String
-    let imageName: String
-}
-//detailView when hamstring exercise is chosen
-struct hamstringExerciseDetail: View {
-    @EnvironmentObject var exerciselist: Exercise
-    @State var weight = ""
-    @State var reps = ""
-    @State var sets = ""
-    @State var addedExercise = false
-    let exercise: hamstringExercises
-    var body: some View {
-        VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -1087,12 +1003,15 @@ struct hamstringExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
@@ -1103,9 +1022,118 @@ struct hamstringExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
+        }
+        .navigationTitle(exercise.exerciseName)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+
+struct hamstringExercises: Identifiable{
+    var id: Int
+    let exerciseName: String
+    let imageName: String
+}
+//detailView when hamstring exercise is chosen
+struct hamstringExerciseDetail: View {
+    @EnvironmentObject var exerciselist: Exercise
+    @State var weight = ""
+    @State var reps = ""
+    @State var sets = ""
+    @State var addedExercise = false
+    @State var e_id = "0"
+    let exercise: hamstringExercises
+    var body: some View {
+        VStack{
+            var id = exercise.id
+            let exerciseName = exercise.exerciseName
+            var exerciseWeight = weight
+            var exerciseReps = reps
+            var exerciseSets = sets
+            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+            Image(exercise.imageName)
+                .resizable()
+                .scaledToFit()
+            HStack{
+                Text("Lbs:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
+                TextField("0", text: self.$weight)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(weight)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.weight = filtered
+                        }
+                    }
+
+                Text("Reps:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.leading,15)
+                TextField("0", text: self.$reps)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(reps)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.reps = filtered
+                        }
+                    }
+
+                Text("Sets:")
+                    .bold()
+                    .frame(width:75,height:50)
+                    .background(Color("Color"))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                TextField("0", text: self.$sets)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(sets)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.sets = filtered
+                        }
+                    }
+
+            }.padding(.bottom,10)
+            NavigationLink(destination: UserPageView(), isActive: $addedExercise){
+            }
+            Button("Add Exercise") {
+                //add excercise
+                var message = ""
+                let exGroup = DispatchGroup()
+                exGroup.enter()
+                //Add old excercise to list
+                addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
+                    response in
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
+                    exGroup.leave()
+                }
+                exGroup.notify(queue: .main)
+                {
+                    print("ERROR " + message + " E_ID: " + String(e_id))
+                }
+                exerciselist.add(exercise: exerciseID)
+                self.addedExercise.toggle()
+            }
+            .font(.headline)
+            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .foregroundColor(.white)
+            .background(Color("Color"))
+            .cornerRadius(5)
+            .padding(.leading,-10)
+            .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
         }
         .navigationBarTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1125,10 +1153,11 @@ struct calfExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: calfExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -1195,12 +1224,15 @@ struct calfExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 
                 exerciselist.add(exercise: exerciseID)
@@ -1212,9 +1244,7 @@ struct calfExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1234,10 +1264,11 @@ struct abdominalExerciseDetail: View {
     @State var reps = ""
     @State var sets = ""
     @State var addedExercise = false
+    @State var e_id = "0"
     let exercise: abdominalExercises
     var body: some View {
         VStack{
-            let id = exercise.id
+            var id = exercise.id
             let exerciseName = exercise.exerciseName
             var exerciseWeight = weight
             var exerciseReps = reps
@@ -1305,12 +1336,15 @@ struct abdominalExerciseDetail: View {
                 //Add old excercise to list
                 addOldExercise(token, text1, Int(exerciseWeight) ?? 0, exerciseName, Int(exerciseSets) ?? 0, Int(exerciseReps) ?? 0){
                     response in
-                    message = response
+                    let dict = response
+                    message = dict["message"] as! String
+                    e_id = dict["e_id"] as! String
+                    id = Int(e_id) ?? 0
                     exGroup.leave()
                 }
                 exGroup.notify(queue: .main)
                 {
-                    print("ERROR " + message)
+                    print("ERROR " + message + " E_ID: " + String(e_id))
                 }
                 
                 exerciselist.add(exercise: exerciseID)
@@ -1322,9 +1356,7 @@ struct abdominalExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
