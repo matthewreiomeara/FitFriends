@@ -466,7 +466,9 @@ struct chestExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
             
         }
         .navigationTitle(exercise.exerciseName)
@@ -573,7 +575,9 @@ struct tricepExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -679,7 +683,9 @@ struct backExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -785,7 +791,9 @@ struct bicepExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -891,7 +899,9 @@ struct shoulderExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -984,7 +994,9 @@ struct quadExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1091,7 +1103,9 @@ struct hamstringExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationBarTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1198,7 +1212,9 @@ struct calfExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
@@ -1306,7 +1322,9 @@ struct abdominalExerciseDetail: View {
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(.red).bold()
         }
         .navigationTitle(exercise.exerciseName)
         .navigationBarTitleDisplayMode(.inline)
