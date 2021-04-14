@@ -385,11 +385,14 @@ struct chestExerciseDetail: View {
     var body: some View {
         var id = exercise.id
         let exerciseName = exercise.exerciseName
-        var exerciseWeight = weight
-        var exerciseReps = reps
-        var exerciseSets = sets
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        VStack{
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -402,6 +405,7 @@ struct chestExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -418,6 +422,7 @@ struct chestExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -433,6 +438,7 @@ struct chestExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -465,16 +471,21 @@ struct chestExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-            
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -494,13 +505,16 @@ struct tricepExerciseDetail: View {
     @State var e_id = "0"
     let exercise: tricepExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -513,6 +527,7 @@ struct tricepExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -529,6 +544,7 @@ struct tricepExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -544,6 +560,7 @@ struct tricepExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -576,15 +593,21 @@ struct tricepExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -604,13 +627,16 @@ struct backExerciseDetail: View {
     @State var e_id = "0"
     let exercise: backExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -623,6 +649,7 @@ struct backExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -639,6 +666,7 @@ struct backExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -654,6 +682,7 @@ struct backExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -686,15 +715,21 @@ struct backExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -714,13 +749,16 @@ struct bicepExerciseDetail: View {
     @State var e_id = "0"
     let exercise: bicepExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -733,6 +771,7 @@ struct bicepExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -749,6 +788,7 @@ struct bicepExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -764,6 +804,7 @@ struct bicepExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -796,15 +837,21 @@ struct bicepExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -824,13 +871,16 @@ struct shoulderExerciseDetail: View {
     @State var e_id = "0"
     let exercise: shoulderExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -843,6 +893,7 @@ struct shoulderExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -859,6 +910,7 @@ struct shoulderExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -874,6 +926,7 @@ struct shoulderExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -906,15 +959,21 @@ struct shoulderExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -934,13 +993,16 @@ struct quadExerciseDetail: View {
     @State var e_id = "0"
     let exercise: quadExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -953,6 +1015,7 @@ struct quadExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -969,6 +1032,7 @@ struct quadExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -984,6 +1048,7 @@ struct quadExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -996,7 +1061,6 @@ struct quadExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
-                //add excercise
                 var message = ""
                 let exGroup = DispatchGroup()
                 exGroup.enter()
@@ -1017,15 +1081,21 @@ struct quadExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -1045,13 +1115,16 @@ struct hamstringExerciseDetail: View {
     @State var e_id = "0"
     let exercise: hamstringExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -1064,6 +1137,7 @@ struct hamstringExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1080,6 +1154,7 @@ struct hamstringExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1095,6 +1170,7 @@ struct hamstringExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1107,7 +1183,6 @@ struct hamstringExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
-                //add excercise
                 var message = ""
                 let exGroup = DispatchGroup()
                 exGroup.enter()
@@ -1128,15 +1203,21 @@ struct hamstringExerciseDetail: View {
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationBarTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -1156,13 +1237,16 @@ struct calfExerciseDetail: View {
     @State var e_id = "0"
     let exercise: calfExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -1175,6 +1259,7 @@ struct calfExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1191,6 +1276,7 @@ struct calfExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1206,6 +1292,7 @@ struct calfExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1234,20 +1321,25 @@ struct calfExerciseDetail: View {
                 {
                     print("ERROR " + message + " E_ID: " + String(e_id))
                 }
-                
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
@@ -1267,13 +1359,16 @@ struct abdominalExerciseDetail: View {
     @State var e_id = "0"
     let exercise: abdominalExercises
     var body: some View {
-        VStack{
-            var id = exercise.id
-            let exerciseName = exercise.exerciseName
-            var exerciseWeight = weight
-            var exerciseReps = reps
-            var exerciseSets = sets
-            let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        var id = exercise.id
+        let exerciseName = exercise.exerciseName
+        let exerciseWeight = weight
+        let exerciseReps = reps
+        let exerciseSets = sets
+        let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
+        Color("Color4")
+            .ignoresSafeArea(.all)
+            .overlay(
+                VStack{
             Image(exercise.imageName)
                 .resizable()
                 .scaledToFit()
@@ -1286,6 +1381,7 @@ struct abdominalExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1302,6 +1398,7 @@ struct abdominalExerciseDetail: View {
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1317,6 +1414,7 @@ struct abdominalExerciseDetail: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -1329,7 +1427,6 @@ struct abdominalExerciseDetail: View {
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
-                
                 var message = ""
                 let exGroup = DispatchGroup()
                 exGroup.enter()
@@ -1346,20 +1443,25 @@ struct abdominalExerciseDetail: View {
                 {
                     print("ERROR " + message + " E_ID: " + String(e_id))
                 }
-                
                 exerciselist.add(exercise: exerciseID)
                 self.addedExercise.toggle()
             }
             .font(.headline)
-            .frame(width: UIScreen.main.bounds.width/3, height: 75)
+            .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
             .background(Color("Color"))
             .cornerRadius(5)
             .padding(.leading,-10)
+            .padding(.bottom,10)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
-        }
-        .navigationTitle(exercise.exerciseName)
-        .navigationBarTitleDisplayMode(.inline)
+            Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
+                .padding(.bottom,10)
+
+            }
+            .background(Color("Color2")).ignoresSafeArea(.all)
+            .navigationBarTitle(exercise.exerciseName)
+            .navigationBarTitleDisplayMode(.inline)
+        )
     }
 }
 
