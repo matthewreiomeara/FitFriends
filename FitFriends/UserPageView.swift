@@ -42,7 +42,7 @@ struct UserPageView: View {
         return formatter
     }
     
-    let backgroundCol = UIColor(red: 0/255, green: 96/255,blue: 6/255, alpha: 1.0)
+    let backgroundCol = UIColor(red: 114/255, green: 159/255,blue: 106/255, alpha: 1.0)
     init() {
         UITableView.appearance().backgroundColor = backgroundCol
     }
@@ -114,7 +114,7 @@ struct UserPageView: View {
                                     Image(systemName: "plus.circle")
                                         .foregroundColor(.white)
                                 }.buttonStyle(BorderlessButtonStyle())
-                        }.listRowBackground(Color("Color2"))
+                        }.listRowBackground(Color("Color"))
                         
                         //grabs exercises and displays them with the option of deleting via sliding to the left
                         ForEach(exerciselist.items) { item in
@@ -124,25 +124,25 @@ struct UserPageView: View {
                                 VStack(alignment: .leading){
                                     Text("Lbs: \(item.weight)")
                                         .frame(width:75,height:20)
-                                        .background(Color("Color"))
+                                        .background(Color("Color2"))
                                         .foregroundColor(.white)
                                         .cornerRadius(3)
                                         .padding(.bottom,1)
                                     Text("Reps: \(item.reps)")                     .frame(width:75,height:20)
-                                        .background(Color("Color"))
+                                        .background(Color("Color2"))
                                         .foregroundColor(.white)
                                         .cornerRadius(3)
                                         .padding(.bottom,1)
                                     Text("Sets: \(item.sets)")
                                         .frame(width:75,height:20)
-                                        .background(Color("Color"))
+                                        .background(Color("Color2"))
                                         .foregroundColor(.white)
                                         .cornerRadius(3)
                                         .padding(.bottom,1)
                                 }
                                 Image(systemName: "chevron.left.2")
                                     .foregroundColor(.white)
-                            }.listRowBackground(Color("Color2"))
+                            }.listRowBackground(Color("Color"))
                         }
                         .onDelete(perform: deleteExercise)
                     }//.frame(maxWidth:.infinity)
@@ -186,6 +186,9 @@ struct UserPageView: View {
     }
     func deleteExercise(at offsets: IndexSet){
         exerciselist.items.remove(atOffsets: offsets)
+        //exerciselist.items.remove(atOffsets: offsets)
+        //print(something)
+        //exerciselist.items.remove
     }
 }
 
@@ -204,10 +207,18 @@ class Exercise: ObservableObject {
         items.append(exercise)
     }
 
-    func remove(exercise: exerciseItem) {
+    func remove(exercise: exerciseItem)-> Int {
+        print("hello")
         if let index = items.firstIndex(of: exercise) {
-            items.remove(at: index)
+            //items.remove(at: index)
+            print("hello1")
+            return items.remove(at: index).id
         }
+        return 0
+    }
+    func removeByID(exercise: exerciseItem) {
+        //items.remove(exercise)
+        //items.
     }
 }
 
