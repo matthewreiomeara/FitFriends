@@ -411,6 +411,8 @@ func addNewCalories(_ token: String,_ amount: Int,_ description: String,_ type: 
            switch response.result {
                 //If succesfully reaches site
                 case .success(_):
+                    
+                    print(response.response?.statusCode as Any)
                     //On success prints corresponding values
                    if (response.response?.statusCode == 200)
                    {
@@ -420,6 +422,7 @@ func addNewCalories(_ token: String,_ amount: Int,_ description: String,_ type: 
                    }
                    else
                    {
+                        print("I DID NOT")
                         completion(message);
                    }
                     break
@@ -462,7 +465,6 @@ func addOldCalories(_ token: String,_ date: String,_ amount: Int,_ description: 
            switch response.result {
                 //If succesfully reaches site
                 case .success(_):
-                    print(response.response?.statusCode as Any)
                     //On success prints corresponding values
                    if (response.response?.statusCode == 200)
                    {
@@ -625,4 +627,28 @@ func callOldEntry(_ token: String,_ date: String, _ completion: @escaping ([Stri
                break
            }
     }
+}
+
+//Turns an String that looks like an array of dictionaries into an array
+func textToArray(text: String) -> [String.SubSequence] {
+    var text1 = text
+    text1 = text1.replacingOccurrences(of: "[\n", with: "", options: .literal, range: nil)
+    text1 = text1.replacingOccurrences(of: "  {", with: "{", options: .literal, range: nil)
+    text1 = text1.replacingOccurrences(of: "  }", with: "}", options: .literal, range: nil)
+    text1 = text1.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
+    text1 = text1.replacingOccurrences(of: "},{", with: "}+{", options: .literal, range: nil)
+    let arr = text1.split(separator: "+")
+    return arr
+}
+
+//Turns a value in the array into a dictionary
+func convertToDictionary(text: String) -> [String: Any]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
 }

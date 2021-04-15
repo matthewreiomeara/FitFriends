@@ -15,6 +15,7 @@ var token = ""
 var name = ""
 var rmodel = 0
 var model = ""
+var exList = ""
 
 struct MainPageView: View {
     var body: some View {
@@ -206,11 +207,14 @@ struct Login : View {
                                    //self.token = "Bearer " + response
                                     let dict = response
                                     message = dict["error"]!
+                                    exList = dict["exercise"] ?? ""
                                     entryGroup.leave()
                                 }
                                 entryGroup.notify(queue: .main){
                                     if(message != "error")
                                     {
+                                        
+                                        print("EXLIST " + exList)
                                         print("NEW ENTRY ADDED")
                                     }
                                     else{

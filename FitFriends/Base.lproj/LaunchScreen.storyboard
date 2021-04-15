@@ -33,7 +33,7 @@
     <resources>
         <image name="Logo" width="200" height="200"/>
         <namedColor name="Color">
-            <color red="0.21899999678134918" green="0.39100000262260437" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.14900000393390656" green="0.26800000667572021" blue="0.12800000607967377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

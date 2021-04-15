@@ -81,7 +81,6 @@ struct UserPageView: View {
                                     self.isDateShown.toggle()
                                     text1 = stringDate.string(from: selectedDate)
                                     print("DATE: " + text1)
-                                    exerciselist.removeAll()
                                     
                                     let entryGroup = DispatchGroup()
                                     var msg = ""
@@ -91,11 +90,27 @@ struct UserPageView: View {
                                        //self.token = "Bearer " + response
                                         let dict = response
                                         msg = dict["error"]!
+                                        exList = dict["exercise"] ?? ""
                                         entryGroup.leave()
                                     }
                                     entryGroup.notify(queue: .main){
                                         if(msg != "error")
                                         {
+                                            exerciselist.removeAll()
+                                            var arr = textToArray(text: exList)
+                                            let temp = convertToDictionary(text: String(arr[0]))
+                                            
+                                            while(!arr.isEmpty)
+                                            {
+                                                var eid = 0
+                                                eid = Int(toString(temp!["e_id"]))!
+                                                print("THIS IS " + String(eid))
+                                                
+                                                let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                                                
+                                                exerciselist.add(exercise: tempEx)
+                                                arr.remove(at: 0)
+                                            }
                                             print("NEW ENTRY ADDED " + text1)
                                         }
                                         else{
@@ -220,6 +235,22 @@ struct UserPageView: View {
                                         //self.caloriesHit
                                         self.caloriesHit = addedCals + caloriesHit
                                         self.caloriesHitString = ""
+                                        
+                                        var mes = ""
+                                        let addGroup = DispatchGroup()
+                                        addGroup.enter()
+                                        addOldCalories(token,text1, addedCals, "a", "b"){ response in
+                                            //Saves the response as a dictionary
+                                            mes = response
+
+                                            addGroup.leave()
+                                         }
+
+                                        addGroup.notify(queue: .main) {
+                                            //Update some textfield using the dailyInfo
+                                            print("THIS : " + mes)
+                                         }
+                                        
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
@@ -360,13 +391,35 @@ struct UserPageView: View {
             roleModel.roleModel = rmodel
             roleModel.roleModelTitle = model
         }
+        .onAppear(){
+            var arr = textToArray(text: exList)
+            let temp = convertToDictionary(text: String(arr[0]))
+            
+            while(!arr.isEmpty)
+            {
+                var eid = 0
+                eid = Int(toString(temp!["e_id"]))!
+                print("THIS IS " + String(eid))
+                
+                let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                
+                exerciselist.add(exercise: tempEx)
+                arr.remove(at: 0)
+            }
+            
+        }
     }
     func deleteExercise(at offsets: IndexSet){
+        print("I RAN")
         exerciselist.items.remove(atOffsets: offsets)
         //exerciselist.items.remove(atOffsets: offsets)
         //print(something)
         //exerciselist.items.remove
     }
+}
+
+func toString(_ value: Any?) -> String {
+  return String(describing: value ?? "")
 }
 
 struct exerciseItem: Equatable, Identifiable {
@@ -385,7 +438,6 @@ class Exercise: ObservableObject {
     }
 
     func remove(exercise: exerciseItem)-> Int {
-        print("hello")
         if let index = items.firstIndex(of: exercise) {
             //items.remove(at: index)
             print("hello1")
