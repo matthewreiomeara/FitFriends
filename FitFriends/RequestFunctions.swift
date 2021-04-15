@@ -559,7 +559,7 @@ func callOldEntry(_ token: String,_ date: String, _ completion: @escaping ([Stri
                             dict["calories"] = json["calories"].rawString() ??  ""
                             dict["exercise"] = json["exercises"].rawString() ??  ""
                             print(json["exercise"].rawString() ??  "")
-                            dict["error"] = "error"
+                            dict["error"] = "good"
                             completion(dict)
                        }
                        else
