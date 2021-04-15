@@ -13,6 +13,8 @@ import Foundation
 
 var token = ""
 var name = ""
+var rmodel = 0
+var model = ""
 
 struct MainPageView: View {
     var body: some View {
@@ -158,7 +160,6 @@ struct Login : View {
                     
 //========================================================
                     //button for login
-                    var model = ""
                     Button(action: {
                         checkInputs()
                         myGroup.enter()
@@ -178,6 +179,24 @@ struct Login : View {
                             if token != "error"{
                                 token = "Bearer " + token
                                 print("model " + model)
+                                
+                                if(model == "Advanced")
+                                {
+                                    rmodel = 3
+                                }
+                                else if(model == "Intermediate")
+                                {
+                                    rmodel = 2
+                                }
+                                else if(model == "Beginner")
+                                {
+                                    rmodel = 1
+                                }
+                                else
+                                {
+                                    rmodel = 0
+                                }
+                                
                                 print(token)
                                 let entryGroup = DispatchGroup()
                                 var message = ""

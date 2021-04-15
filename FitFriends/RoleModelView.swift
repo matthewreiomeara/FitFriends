@@ -11,6 +11,7 @@ import SwiftUI
 struct RoleModelView: View {
     //@State var roleModel: Int = 0
     @EnvironmentObject var roleModel: roleModelInfo
+    
     var body: some View {
         NavigationView {
             VStack{

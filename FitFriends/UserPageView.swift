@@ -59,6 +59,7 @@ struct UserPageView: View {
     
     let backgroundCol = UIColor(red: 114/255, green: 159/255,blue: 106/255, alpha: 1.0)
     init() {
+        
         UITableView.appearance().backgroundColor = backgroundCol
     }
     var body: some View {
@@ -128,6 +129,8 @@ struct UserPageView: View {
                             }
                             .padding(.leading, UIScreen.main.bounds.width/12)
                             VStack {
+                                
+                                
                                 if roleModel.roleModel == 1 {
                                     Image("beginner")
                                         .resizable()
@@ -353,6 +356,10 @@ struct UserPageView: View {
             }.accentColor(.black)
         }.navigationBarTitle("")
         .navigationBarHidden(true)
+        .onAppear(){
+            roleModel.roleModel = rmodel
+            roleModel.roleModelTitle = model
+        }
     }
     func deleteExercise(at offsets: IndexSet){
         exerciselist.items.remove(atOffsets: offsets)
