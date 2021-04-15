@@ -462,7 +462,8 @@ struct chestExerciseDetail: View {
                     response in
                     let dict = response
                     message = dict["message"] as! String
-                    e_id = dict["e_id"] as! String
+                    let temp = dict["e_id"] as! Int
+                    e_id = String(temp)
                     id = Int(e_id) ?? 0
                     exGroup.leave()
                 }

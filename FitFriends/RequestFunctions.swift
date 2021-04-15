@@ -230,7 +230,12 @@ func addOldExercise(_ token: String,_ date: String, _ amount: Int,_ description:
     var params = ["date": "", "amount": 0, "description": "", "sets": 0, "reps": 0] as [String : Any]
     //sets the current date
     params["date"] = date
-    params["amount"] = amount
+    var str = amount
+    if (str == 0)
+    {
+        str = 0
+    }
+    params["amount"] = str
     params["description"] = description
     params["sets"] = sets
     params["reps"] = reps

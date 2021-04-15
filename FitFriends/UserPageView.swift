@@ -393,18 +393,21 @@ struct UserPageView: View {
         }
         .onAppear(){
             var arr = textToArray(text: exList)
-            let temp = convertToDictionary(text: String(arr[0]))
-            
-            while(!arr.isEmpty)
+            if(arr[0].contains("+"))
             {
-                var eid = 0
-                eid = Int(toString(temp!["e_id"]))!
-                print("THIS IS " + String(eid))
+                let temp = convertToDictionary(text: String(arr[0]))
                 
-                let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
-                
-                exerciselist.add(exercise: tempEx)
-                arr.remove(at: 0)
+                while(!arr.isEmpty)
+                {
+                    var eid = 0
+                    eid = Int(toString(temp!["e_id"]))!
+                    print("THIS IS " + String(eid))
+                    
+                    let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                    
+                    exerciselist.add(exercise: tempEx)
+                    arr.remove(at: 0)
+                }
             }
             
         }
@@ -412,9 +415,7 @@ struct UserPageView: View {
     func deleteExercise(at offsets: IndexSet){
         print("I RAN")
         exerciselist.items.remove(atOffsets: offsets)
-        //exerciselist.items.remove(atOffsets: offsets)
-        //print(something)
-        //exerciselist.items.remove
+
     }
 }
 
