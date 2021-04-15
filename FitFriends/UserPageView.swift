@@ -179,6 +179,7 @@ struct UserPageView: View {
                                             .foregroundColor(.white)
                                     }.padding(.leading,-20)
                                 }
+                                .padding(.bottom,10)
                             }
                             VStack{
                                 HStack{
@@ -205,23 +206,17 @@ struct UserPageView: View {
                                     Text("Choose RoleModel")
                                         .bold()
                                         .frame(width:UIScreen.main.bounds.width/2.5,height:30)
-                                        .background(Color("Color"))
+                                        .background(Color("Color2"))
                                         .foregroundColor(.white)
                                         .cornerRadius(5)
                                     }.buttonStyle(BorderlessButtonStyle())
+                                    .padding(.bottom,10)
                                 }
                             }.frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }.background(Color("Color"))
                     .padding(.bottom,-10)
-//                    VStack{
-//                        HStack {
-//                            Text("Add Calories").foregroundColor(.white)
-//                            Spacer()
-//                            Text("RoleModel").foregroundColor(.white)
-//                        }.frame(height: UIScreen.main.bounds.height/4)
-//                    }.background(Color("Color"))
-//                    .padding(.bottom,-10)
+
 
                     //list displaying exercise title and exercises to be added
                     List {
