@@ -12,6 +12,7 @@ import Foundation
 
 
 var token = ""
+var name = ""
 
 struct MainPageView: View {
     var body: some View {
@@ -58,7 +59,7 @@ struct Login : View {
     @State var alert = false
     @State var error = ""
     @State var loading = false
-    @State var name = ""
+    //@State var name = ""
     let myGroup = DispatchGroup()
 
     var body :some View{
@@ -165,7 +166,7 @@ struct Login : View {
                             //self.token = "Bearer " + response
                             let dict = response
                             token = dict["token"]!
-                            self.name = dict["name"]!
+                            name = dict["name"]!
                              myGroup.leave()
                          }
                          

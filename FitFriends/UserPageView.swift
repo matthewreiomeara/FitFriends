@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 var text1 = curDate.string(from: Date())
@@ -30,6 +31,17 @@ struct UserPageView: View {
     @State var selectedDate = Date()
     @State var isDateShown = false
     //formats date for UI purposes
+    @State var caloriesHit: Int = 0
+    @State var caloriesHitString: String = ""
+    @State var calorieGoalString: String = ""
+    @State var calorieGoal: Int = 0
+    @State var caloriesHitFloat: CGFloat = 0
+    @State var calorieGoalFloat: CGFloat = 0
+    @State var percentageToInt: Int = 0
+    @State var finalPercentage: CGFloat = 0
+    @State var addedCals : Int = 0
+    @State var roleModel: String = ""
+    
     var formatDate: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
@@ -80,14 +92,136 @@ struct UserPageView: View {
                         }
                     }
                     //Two stacks that will eventually hold calories and rolemodel displays
-                    VStack{
-                        HStack {
-                            Text("Add Calories").foregroundColor(.white)
-                            Spacer()
-                            Text("RoleModel").foregroundColor(.white)
-                        }.frame(height: UIScreen.main.bounds.height/4)
+                    VStack {
+                        HStack{
+                            VStack {
+                                ZStack {
+                                    //Pulsation()
+                                    Track()
+                                    Label(caloriesHit: caloriesHit, calorieGoal: calorieGoal)
+                                    Outline(percentage: finalPercentage)
+                                }
+                            }
+                            .padding(.leading, UIScreen.main.bounds.width/10)
+                            VStack {
+                                Image("empty")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width:150,height:150)
+                                    .clipShape(Circle())
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            .padding(.leading,UIScreen.main.bounds.width/10)
+                        }.padding(.bottom, 10)
+                        HStack{
+                            VStack{
+                                HStack {
+                                    Text("Calorie Goal:")
+                                        .bold()
+                                        .font(.system(size:15))
+                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                        .foregroundColor(.white)
+                                    TextField("0000", text: self.$calorieGoalString)
+                                        .foregroundColor(.white)
+                                        .keyboardType(.numberPad)
+                                        .onReceive(Just(calorieGoalString)) { newValue in
+                                            let filtered = newValue.filter { "0123456789".contains($0) }
+                                            if filtered != newValue {
+                                                self.calorieGoalString = filtered
+                                            }
+                                        }
+                                        .frame(width: 50)
+                                    Button(action: {
+                                        self.calorieGoal = Int(calorieGoalString) ?? 0
+                                        self.calorieGoalString = ""
+                                        self.caloriesHit = 0
+                                        self.finalPercentage = 0
+                                    }) {
+                                        Image(systemName: "plus.circle.fill")
+                                            .frame(width: 50, height: 25)
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundColor(.white)
+                                    }.padding(.leading,-20)
+                                }
+                                HStack {
+                                    Text("Add Calories:")
+                                        .bold()
+                                        .font(.system(size: 15))
+                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                        .foregroundColor(.white)
+                                    TextField("0000", text: self.$caloriesHitString)
+                                        .foregroundColor(.white)
+                                        .keyboardType(.numberPad)
+                                        .onReceive(Just(caloriesHitString)) { newValue in
+                                            let filtered = newValue.filter { "0123456789".contains($0) }
+                                            if filtered != newValue {
+                                                self.caloriesHitString = filtered
+                                            }
+                                        }
+                                        .frame(width: 50)
+                                    Button(action: {
+                                        //grab string int and turn into int or 0
+                                        self.addedCals = Int(caloriesHitString) ?? 0
+                                        //turn both inputs into float
+                                        self.caloriesHitFloat = CGFloat(addedCals)
+                                        self.calorieGoalFloat = CGFloat(calorieGoal)
+                                        //get percentage
+                                        self.finalPercentage = (caloriesHitFloat/calorieGoalFloat) + finalPercentage/100
+                                        //turn percentage into correct float
+                                        self.finalPercentage = finalPercentage * 100
+                                        //grab calories inputted
+                                        //self.caloriesHit
+                                        self.caloriesHit = addedCals + caloriesHit
+                                        self.caloriesHitString = ""
+                                    }) {
+                                        Image(systemName: "plus.circle.fill")
+                                            .frame(width: 50, height: 25)
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundColor(.white)
+                                    }.padding(.leading,-20)
+                                }
+                            }
+                            VStack{
+                                HStack{
+                                    Text("RoleModel :")
+                                        .bold()
+                                        .font(.system(size: 15))
+                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                        .foregroundColor(.white)
+                                        .padding(.leading,15)
+                                    TextField("None", text: self.$roleModel)
+                                        .foregroundColor(.white)
+                                        .frame(width: 85)
+                                        .padding(.leading,-15)
+                                        .font(.system(size:20))
+                                }
+                                HStack{
+                                    NavigationLink(destination: RoleModelView(), isActive: $showRoleModelView) {
+                                    }
+                                    Button(action: {
+                                        withAnimation {
+                                            self.showRoleModelView.toggle()
+                                        }
+                                    }){
+                                    Text("Choose RoleModel")
+                                        .bold()
+                                        .frame(width:UIScreen.main.bounds.width/2.5,height:30)
+                                        .background(Color("Color"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(5)
+                                    }.buttonStyle(BorderlessButtonStyle())
+                                }
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                        }
                     }.background(Color("Color"))
                     .padding(.bottom,-10)
+//                    VStack{
+//                        HStack {
+//                            Text("Add Calories").foregroundColor(.white)
+//                            Spacer()
+//                            Text("RoleModel").foregroundColor(.white)
+//                        }.frame(height: UIScreen.main.bounds.height/4)
+//                    }.background(Color("Color"))
+//                    .padding(.bottom,-10)
 
                     //list displaying exercise title and exercises to be added
                     List {
@@ -219,6 +353,50 @@ class Exercise: ObservableObject {
     func removeByID(exercise: exerciseItem) {
         //items.remove(exercise)
         //items.
+    }
+}
+
+struct Label: View {
+    var caloriesHit: Int = 0
+    var calorieGoal: Int = 0
+    var body: some View {
+        ZStack {
+            Text(String("\(caloriesHit)" + "/" + "\(calorieGoal)")).font(.system(size:15)).fontWeight(.heavy).colorInvert()
+        }
+    }
+}
+
+struct Outline: View {
+    var percentage: CGFloat = 0
+    var colors: [Color] = [Color.outlineColor]
+    var body: some View {
+        ZStack {
+            Circle().fill(Color.clear)
+                .frame(width:125, height: 125)
+                .overlay(
+                    Circle()
+                        .trim(from: 0, to: percentage * 0.01)
+                        .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                        .fill(AngularGradient(gradient: .init(colors: colors), center: .center, startAngle: .zero, endAngle: .init(degrees: 360)))
+                        .rotationEffect(Angle(degrees: 270))
+                ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+        }
+    }
+}
+
+struct Track: View {
+    var colors: [Color] = [Color.trackColor]
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(Color.backgroundColor)
+                .frame(width:125, height: 125)
+                .overlay(
+                    Circle()
+                        .stroke(style: StrokeStyle(lineWidth: 10))
+                        .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
+                )
+        }
     }
 }
 
