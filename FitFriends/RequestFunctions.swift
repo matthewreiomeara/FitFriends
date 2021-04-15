@@ -108,6 +108,57 @@ import SwiftyJSON
 //    }
 // }
 
+
+//====================Role Model Set=============================
+
+//Sets the Role Model
+func setRoleModel(_ token: String,_ roleModel: String, _ completion: @escaping (String) -> Void)
+{
+    //URL with endpoint to sent to
+    let url = "https://fit-friends.herokuapp.com/api/roleModel"
+    
+    //Parameters to input
+    var params = ["role_model": ""]
+    params["role_model"] = roleModel
+    
+    //Headers for the request with the token
+    let headers: HTTPHeaders = [
+        "Content-Type": "application/json",
+        "Authorization": token
+    ]
+    
+    //data to grab from request
+    var message = "error"
+    
+    //Requests at (fitfriends, POST, data to go in, JSON format)
+    AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers) .responseJSON
+    { response in
+           //Loads into switch
+           switch response.result {
+                //If succesfully reaches site
+                case .success(_):
+                    
+                    //On success prints corresponding values
+                   if (response.response?.statusCode == 200)
+                   {
+                        message = "Success"
+                    
+                        completion(message)
+                   }
+                   else
+                   {
+                        completion(message);
+                   }
+                    break
+           case .failure(_):
+            print("INVALID URL")
+            break
+           }
+    }
+    
+    
+}
+
 //===========================Add Exercise================================
 //Sets the calories for today's date
 func addNewExercise(_ token: String,_ amount: Int,_ description: String,_ sets: Int,_ reps: Int, _ completion: @escaping (String) -> Void)

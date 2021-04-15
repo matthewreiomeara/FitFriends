@@ -16,6 +16,23 @@ struct RoleModelView: View {
             VStack{
                 Button(action: {
                     withAnimation {
+                        
+                        //Sets the role modeel
+                        let aGroup = DispatchGroup()
+
+                        var message = ""
+                        aGroup.enter()
+                        setRoleModel(token,"Beginner") { response in
+                            //Saves the response as a dictionary
+                            message = response
+                            aGroup.leave()
+                         }
+
+                        // Waits for request to finish
+                        aGroup.notify(queue: .main) {
+                            print("model" + message)
+                         }
+                        
                         roleModel.roleModel = 1
                         roleModel.roleModelTitle = "Beginner"
                     }
@@ -31,6 +48,23 @@ struct RoleModelView: View {
                 
                 Button(action: {
                     withAnimation {
+                        
+                        //Sets the role modeel
+                        let aGroup = DispatchGroup()
+
+                        var message = ""
+                        aGroup.enter()
+                        setRoleModel(token,"Intermediate") { response in
+                            //Saves the response as a dictionary
+                            message = response
+                            aGroup.leave()
+                         }
+
+                        // Waits for request to finish
+                        aGroup.notify(queue: .main) {
+                            print("model" + message)
+                         }
+                        
                         roleModel.roleModel = 2
                         roleModel.roleModelTitle = "Intermediate"
                     }
@@ -46,6 +80,23 @@ struct RoleModelView: View {
                 
                 Button(action: {
                     withAnimation {
+                        
+                        //Sets the role modeel
+                        let aGroup = DispatchGroup()
+
+                        var message = ""
+                        aGroup.enter()
+                        setRoleModel(token,"Advanced") { response in
+                            //Saves the response as a dictionary
+                            message = response
+                            aGroup.leave()
+                         }
+
+                        // Waits for request to finish
+                        aGroup.notify(queue: .main) {
+                            print("model " + message)
+                         }
+                        
                         roleModel.roleModel = 3
                         roleModel.roleModelTitle = "Advanced"
                     }

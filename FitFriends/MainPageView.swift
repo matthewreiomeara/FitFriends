@@ -158,6 +158,7 @@ struct Login : View {
                     
 //========================================================
                     //button for login
+                    var model = ""
                     Button(action: {
                         checkInputs()
                         myGroup.enter()
@@ -167,6 +168,7 @@ struct Login : View {
                             let dict = response
                             token = dict["token"]!
                             name = dict["name"]!
+                            model = dict["role_model"]!
                              myGroup.leave()
                          }
                          
@@ -175,7 +177,8 @@ struct Login : View {
                             //if successfull, toggle loading, wait 2 seconds and direct to user page
                             if token != "error"{
                                 token = "Bearer " + token
-                                
+                                print("model " + model)
+                                print(token)
                                 let entryGroup = DispatchGroup()
                                 var message = ""
                                 entryGroup.enter()
@@ -411,7 +414,7 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([Stri
     var token = ""
     var name = ""
     
-    var dict = ["token": "", "name": ""]
+    var dict = ["token": "", "name": "", "role_model": ""]
     
     if ( isValidEmail(email) && isValidPassword(password) == 0)
     {
@@ -445,8 +448,10 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([Stri
                             //token = json["Token"].rawString() ?? ""
                             token = json["Token"].string ?? ""
                             name = json["data"]["name"].string ?? ""
+                            let model = json["data"]["role_model"].string ?? ""
                             dict["token"] = token
                             dict["name"] = name
+                            dict["role_model"] = model
                             completion(dict)
                             //You can send them to the user page at this point
                         }
