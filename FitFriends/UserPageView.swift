@@ -70,7 +70,7 @@ struct UserPageView: View {
                             .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/10)
                             .background(Color("Color2"))
                             .foregroundColor(.white)
-                            .padding(.bottom,-10)
+                            //.padding(.bottom,-10)
                             //if date is clicked then wheel allowing user to pick date is shown
                             .onTapGesture {
                                 withAnimation {
@@ -83,7 +83,7 @@ struct UserPageView: View {
                         Image(systemName: "chevron.compact.down")
                             .font(.system(size:35,weight:.light))
                             .foregroundColor(.white)
-                            .padding(.top,-20)
+                            .padding(.top,-30)
                         //once date is clicked, date wheel is displayed
                         if(isDateShown) {
                             DatePicker("",selection: $selectedDate,in: ...Date(),displayedComponents: .date)
@@ -96,7 +96,6 @@ struct UserPageView: View {
                         HStack{
                             VStack {
                                 ZStack {
-                                    //Pulsation()
                                     Track()
                                     Label(caloriesHit: caloriesHit, calorieGoal: calorieGoal)
                                     Outline(percentage: finalPercentage)
@@ -104,7 +103,7 @@ struct UserPageView: View {
                             }
                             .padding(.leading, UIScreen.main.bounds.width/12)
                             VStack {
-                                Image("empty")
+                                Image("beginner")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
@@ -121,6 +120,7 @@ struct UserPageView: View {
                                         .font(.system(size:15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
+
                                     TextField("0000", text: self.$calorieGoalString)
                                         .foregroundColor(.white)
                                         .keyboardType(.numberPad)
@@ -130,7 +130,7 @@ struct UserPageView: View {
                                                 self.calorieGoalString = filtered
                                             }
                                         }
-                                        .frame(width: 50)
+                                        .frame(width: UIScreen.main.bounds.width/10)
                                         .padding(.leading,-10)
                                     Button(action: {
                                         self.calorieGoal = Int(calorieGoalString) ?? 0
@@ -140,7 +140,7 @@ struct UserPageView: View {
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
-                                    }.padding(.leading,-20)
+                                    }
                                 }
                                 HStack {
                                     Text("Add Calories:")
@@ -148,6 +148,7 @@ struct UserPageView: View {
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
+
                                     TextField("0000", text: self.$caloriesHitString)
                                         .foregroundColor(.white)
                                         .keyboardType(.numberPad)
@@ -157,7 +158,8 @@ struct UserPageView: View {
                                                 self.caloriesHitString = filtered
                                             }
                                         }
-                                        .frame(width: 50)
+                                        .frame(width: UIScreen.main.bounds.width/10)
+                                        .padding(.leading,-10)
                                     Button(action: {
                                         //grab string int and turn into int or 0
                                         self.addedCals = Int(caloriesHitString) ?? 0
@@ -175,24 +177,24 @@ struct UserPageView: View {
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
-                                    }.padding(.leading,-20)
+                                    }
                                 }
                                 .padding(.bottom,10)
-                            }
+                            }.padding(.trailing,UIScreen.main.bounds.width/12)
                             VStack{
                                 HStack{
-                                    Text("RoleModel :")
+                                    Text("RoleModel:")
                                         .bold()
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
-                                        .padding(.leading,10)
+                                        
                                         
                                     TextField("None", text: self.$roleModel)
                                         .foregroundColor(.white)
-                                        .frame(width: 85)
+                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .padding(.leading,-15)
-                                        .font(.system(size:20))
+                                        .font(.system(size:15))
                                 }
                                 HStack{
                                     NavigationLink(destination: RoleModelView(), isActive: $showRoleModelView) {
@@ -204,7 +206,7 @@ struct UserPageView: View {
                                     }){
                                     Text("Choose RoleModel")
                                         .bold()
-                                        .frame(width:UIScreen.main.bounds.width/2.5,height:30)
+                                        .frame(width:UIScreen.main.bounds.width/2.25,height:30)
                                         .background(Color("Color2"))
                                         .foregroundColor(.white)
                                         .cornerRadius(5)
@@ -228,10 +230,7 @@ struct UserPageView: View {
                             }
                             .navigationTitle("Main")
                             .navigationBarTitleDisplayMode(.inline)
-                            //.navigationBarHidden(true)
-//                            .frame(width: 0, height: 0)
-//                            .hidden()
-//                            .disabled(true)
+
                             
                             Spacer()
 
@@ -394,6 +393,8 @@ struct Track: View {
         }
     }
 }
+
+
 
 struct UserPageView_Previews: PreviewProvider {
     static var previews: some View {
