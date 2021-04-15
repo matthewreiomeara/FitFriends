@@ -100,17 +100,18 @@ struct UserPageView: View {
                                     Track()
                                     Label(caloriesHit: caloriesHit, calorieGoal: calorieGoal)
                                     Outline(percentage: finalPercentage)
-                                }
+                                }.padding(.top,15)
                             }
-                            .padding(.leading, UIScreen.main.bounds.width/10)
+                            .padding(.leading, UIScreen.main.bounds.width/12)
                             VStack {
                                 Image("empty")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width:150,height:150)
+                                    .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
                                     .clipShape(Circle())
                             }.frame(minWidth: 0, maxWidth: .infinity)
                             .padding(.leading,UIScreen.main.bounds.width/10)
+                            .padding(.top,15)
                         }.padding(.bottom, 10)
                         HStack{
                             VStack{
@@ -130,6 +131,7 @@ struct UserPageView: View {
                                             }
                                         }
                                         .frame(width: 50)
+                                        .padding(.leading,-10)
                                     Button(action: {
                                         self.calorieGoal = Int(calorieGoalString) ?? 0
                                         self.calorieGoalString = ""
@@ -137,8 +139,6 @@ struct UserPageView: View {
                                         self.finalPercentage = 0
                                     }) {
                                         Image(systemName: "plus.circle.fill")
-                                            .frame(width: 50, height: 25)
-                                            .aspectRatio(contentMode: .fit)
                                             .foregroundColor(.white)
                                     }.padding(.leading,-20)
                                 }
@@ -174,8 +174,6 @@ struct UserPageView: View {
                                         self.caloriesHitString = ""
                                     }) {
                                         Image(systemName: "plus.circle.fill")
-                                            .frame(width: 50, height: 25)
-                                            .aspectRatio(contentMode: .fit)
                                             .foregroundColor(.white)
                                     }.padding(.leading,-20)
                                 }
@@ -188,7 +186,8 @@ struct UserPageView: View {
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
-                                        .padding(.leading,15)
+                                        .padding(.leading,10)
+                                        
                                     TextField("None", text: self.$roleModel)
                                         .foregroundColor(.white)
                                         .frame(width: 85)
@@ -216,6 +215,7 @@ struct UserPageView: View {
                         }
                     }.background(Color("Color"))
                     .padding(.bottom,-10)
+                    .padding(.top,-20)
 
 
                     //list displaying exercise title and exercises to be added
@@ -367,7 +367,7 @@ struct Outline: View {
     var body: some View {
         ZStack {
             Circle().fill(Color.clear)
-                .frame(width:125, height: 125)
+                .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
                 .overlay(
                     Circle()
                         .trim(from: 0, to: percentage * 0.01)
@@ -385,7 +385,7 @@ struct Track: View {
         ZStack {
             Circle()
                 .fill(Color.backgroundColor)
-                .frame(width:125, height: 125)
+                .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
                 .overlay(
                     Circle()
                         .stroke(style: StrokeStyle(lineWidth: 10))
