@@ -389,7 +389,7 @@ struct chestExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -511,7 +511,7 @@ struct tricepExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -633,7 +633,7 @@ struct backExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -755,7 +755,7 @@ struct bicepExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -877,7 +877,7 @@ struct shoulderExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -999,7 +999,7 @@ struct quadExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -1121,7 +1121,7 @@ struct hamstringExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -1243,7 +1243,7 @@ struct calfExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{
@@ -1365,7 +1365,7 @@ struct abdominalExerciseDetail: View {
         let exerciseReps = reps
         let exerciseSets = sets
         let exerciseID = exerciseItem(id: id,name: exerciseName,weight: exerciseWeight,reps:exerciseReps,sets:exerciseSets)
-        Color("Color4")
+        Color("Color")
             .ignoresSafeArea(.all)
             .overlay(
                 VStack{

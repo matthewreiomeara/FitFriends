@@ -40,7 +40,9 @@ struct UserPageView: View {
     @State var percentageToInt: Int = 0
     @State var finalPercentage: CGFloat = 0
     @State var addedCals : Int = 0
-    @State var roleModel: String = ""
+    //@State var roleModel: String = ""
+    
+    @EnvironmentObject var roleModel: roleModelInfo
     
     var formatDate: DateFormatter {
         let formatter = DateFormatter()
@@ -103,11 +105,28 @@ struct UserPageView: View {
                             }
                             .padding(.leading, UIScreen.main.bounds.width/12)
                             VStack {
-                                Image("beginner")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
-                                    .clipShape(Circle())
+                                if roleModel.roleModel == 1 {
+                                    Image("beginner")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                } else if roleModel.roleModel == 2 {
+                                    Image("intermediate")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                } else if roleModel.roleModel == 3 {
+                                    Image("advanced")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                } else {
+                                    Image("empty")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                }
+                                    //.clipShape(Circle())
                             }.frame(minWidth: 0, maxWidth: .infinity)
                             .padding(.leading,UIScreen.main.bounds.width/10)
                             .padding(.top,15)
@@ -190,7 +209,7 @@ struct UserPageView: View {
                                         .foregroundColor(.white)
                                         
                                         
-                                    TextField("None", text: self.$roleModel)
+                                    TextField("None", text: self.$roleModel.roleModelTitle)
                                         .foregroundColor(.white)
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .padding(.leading,-15)
@@ -392,6 +411,11 @@ struct Track: View {
                 )
         }
     }
+}
+
+class roleModelInfo: ObservableObject {
+    @Published var roleModel = 0
+    @Published var roleModelTitle = "None"
 }
 
 
