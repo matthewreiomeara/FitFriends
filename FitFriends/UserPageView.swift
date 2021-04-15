@@ -77,6 +77,28 @@ struct UserPageView: View {
                                     self.isDateShown.toggle()
                                     text1 = stringDate.string(from: selectedDate)
                                     print("DATE: " + text1)
+                                    exerciselist.removeAll()
+                                    
+                                    let entryGroup = DispatchGroup()
+                                    var msg = ""
+                                    entryGroup.enter()
+                                    callOldEntry(token, text1){ response in
+                                        // Do your stuff here
+                                       //self.token = "Bearer " + response
+                                        let dict = response
+                                        msg = dict["error"]!
+                                        entryGroup.leave()
+                                    }
+                                    entryGroup.notify(queue: .main){
+                                        if(msg != "error")
+                                        {
+                                            print("NEW ENTRY ADDED " + text1)
+                                        }
+                                        else{
+                                            print("Error occured")
+                                        }
+                                    }
+                                    
                                 }
                             }
                         //image under date to hint to user that the date can be changed via pressing
@@ -345,10 +367,20 @@ class Exercise: ObservableObject {
         }
         return 0
     }
+    
     func removeByID(exercise: exerciseItem) {
         //items.remove(exercise)
         //items.
     }
+    
+    func removeAll()
+    {
+        while(items.count != 0)
+        {
+            items.remove(at: 0)
+        }
+    }
+    
 }
 
 struct Label: View {
