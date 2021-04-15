@@ -42,6 +42,7 @@ struct UserPageView: View {
     @State var addedCals : Int = 0
     //@State var roleModel: String = ""
     
+    //role model info, has a number and a title
     @EnvironmentObject var roleModel: roleModelInfo
     
     var formatDate: DateFormatter {
@@ -148,7 +149,6 @@ struct UserPageView: View {
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
                                 }
-                                    //.clipShape(Circle())
                             }.frame(minWidth: 0, maxWidth: .infinity)
                             .padding(.leading,UIScreen.main.bounds.width/10)
                             .padding(.top,15)
@@ -162,7 +162,8 @@ struct UserPageView: View {
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
 
-                                    TextField("0000", text: self.$calorieGoalString)
+                                    TextField("0", text: self.$calorieGoalString)
+                                        .modifier(PlaceholderStyle(showPlaceHolder: calorieGoalString.isEmpty, placeholder: "0"))
                                         .foregroundColor(.white)
                                         .keyboardType(.numberPad)
                                         .onReceive(Just(calorieGoalString)) { newValue in
@@ -190,7 +191,8 @@ struct UserPageView: View {
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
 
-                                    TextField("0000", text: self.$caloriesHitString)
+                                    TextField("0", text: self.$caloriesHitString)
+                                        .modifier(PlaceholderStyle(showPlaceHolder: caloriesHitString.isEmpty, placeholder: "0"))
                                         .foregroundColor(.white)
                                         .keyboardType(.numberPad)
                                         .onReceive(Just(caloriesHitString)) { newValue in
@@ -229,6 +231,7 @@ struct UserPageView: View {
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
+                                    
                                         
                                         
                                     TextField("None", text: self.$roleModel.roleModelTitle)
@@ -236,6 +239,7 @@ struct UserPageView: View {
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .padding(.leading,-15)
                                         .font(.system(size:15))
+                                    
                                 }
                                 HStack{
                                     NavigationLink(destination: RoleModelView(), isActive: $showRoleModelView) {
@@ -280,7 +284,7 @@ struct UserPageView: View {
                                     self.addExercise.toggle()
                                 }
                                 }) {
-                                    Image(systemName: "plus.circle")
+                                    Image(systemName: "plus.circle.fill")
                                         .foregroundColor(.white)
                                 }.buttonStyle(BorderlessButtonStyle())
                         }.listRowBackground(Color("Color"))
@@ -317,9 +321,6 @@ struct UserPageView: View {
                     }//.frame(maxWidth:.infinity)
                 }
                 
-                //Navigation bar on top showing image of stack of people and a single person that will eventually display current rolemodel and user data
-                //.navigationBarTitle("")
-                //.navigationBarHidden(true)
                 .navigationBarTitle("Main", displayMode: .inline)
                     .navigationBarItems(trailing:
                         HStack(spacing: 15) {
@@ -441,6 +442,20 @@ struct Track: View {
                         .stroke(style: StrokeStyle(lineWidth: 10))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
                 )
+        }
+    }
+}
+public struct PlaceholderStyle: ViewModifier {
+    var showPlaceHolder: Bool
+    var placeholder: String
+
+    public func body(content: Content) -> some View {
+        ZStack(alignment: .leading) {
+            if showPlaceHolder {
+                Text(placeholder)
+            }
+            content
+            .foregroundColor(Color.white)
         }
     }
 }

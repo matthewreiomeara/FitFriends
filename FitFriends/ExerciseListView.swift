@@ -400,11 +400,12 @@ struct chestExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -417,11 +418,12 @@ struct chestExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -434,10 +436,11 @@ struct chestExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -447,7 +450,7 @@ struct chestExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -473,16 +476,16 @@ struct chestExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -522,11 +525,12 @@ struct tricepExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -539,11 +543,12 @@ struct tricepExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -556,10 +561,11 @@ struct tricepExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -569,7 +575,7 @@ struct tricepExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -595,16 +601,16 @@ struct tricepExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -644,11 +650,12 @@ struct backExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -661,11 +668,12 @@ struct backExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -678,10 +686,11 @@ struct backExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -691,7 +700,7 @@ struct backExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -717,16 +726,16 @@ struct backExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -766,11 +775,12 @@ struct bicepExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -783,11 +793,12 @@ struct bicepExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -800,10 +811,11 @@ struct bicepExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -813,7 +825,7 @@ struct bicepExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -839,16 +851,16 @@ struct bicepExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -888,11 +900,12 @@ struct shoulderExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -905,11 +918,12 @@ struct shoulderExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -922,10 +936,11 @@ struct shoulderExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -935,7 +950,7 @@ struct shoulderExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -961,16 +976,16 @@ struct shoulderExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -1010,11 +1025,12 @@ struct quadExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -1027,11 +1043,12 @@ struct quadExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1044,10 +1061,11 @@ struct quadExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1057,7 +1075,7 @@ struct quadExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -1083,16 +1101,16 @@ struct quadExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -1132,11 +1150,12 @@ struct hamstringExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -1149,11 +1168,12 @@ struct hamstringExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1166,10 +1186,11 @@ struct hamstringExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1179,7 +1200,7 @@ struct hamstringExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -1205,16 +1226,16 @@ struct hamstringExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -1254,11 +1275,12 @@ struct calfExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -1271,11 +1293,12 @@ struct calfExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1288,10 +1311,11 @@ struct calfExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1301,7 +1325,7 @@ struct calfExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -1327,16 +1351,16 @@ struct calfExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
@@ -1376,11 +1400,12 @@ struct abdominalExerciseDetail: View {
                 Text("Lbs:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$weight)
+                    .modifier(PlaceholderStyle(showPlaceHolder: weight.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)) { newValue in
@@ -1393,11 +1418,12 @@ struct abdominalExerciseDetail: View {
                 Text("Reps:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding(.leading,15)
                 TextField("0", text: self.$reps)
+                    .modifier(PlaceholderStyle(showPlaceHolder: reps.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(reps)) { newValue in
@@ -1410,10 +1436,11 @@ struct abdominalExerciseDetail: View {
                 Text("Sets:")
                     .bold()
                     .frame(width:75,height:50)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 TextField("0", text: self.$sets)
+                    .modifier(PlaceholderStyle(showPlaceHolder: sets.isEmpty, placeholder: "0"))
                     .foregroundColor(.white)
                     .keyboardType(.numberPad)
                     .onReceive(Just(sets)) { newValue in
@@ -1423,7 +1450,7 @@ struct abdominalExerciseDetail: View {
                         }
                     }
 
-            }.padding(.bottom,10)
+            }.padding(.top,20)
             NavigationLink(destination: UserPageView(), isActive: $addedExercise){
             }
             Button("Add Exercise") {
@@ -1449,16 +1476,16 @@ struct abdominalExerciseDetail: View {
             .font(.headline)
             .frame(width: UIScreen.main.bounds.width/2, height: 75)
             .foregroundColor(.white)
-            .background(Color("Color"))
+            .background(Color("Color2"))
             .cornerRadius(5)
             .padding(.leading,-10)
-            .padding(.bottom,10)
+            .padding(.top,20)
             .disabled(self.weight.isEmpty || self.reps.isEmpty || self.sets.isEmpty)
             Text("Please fill all blanks in order to add exercise").foregroundColor(Color.white).bold()
-                .padding(.bottom,10)
+                .padding(.top, 10)
 
             }
-            .background(Color("Color2")).ignoresSafeArea(.all)
+            .background(Color("Color")).ignoresSafeArea(.all)
             .navigationBarTitle(exercise.exerciseName)
             .navigationBarTitleDisplayMode(.inline)
         )
