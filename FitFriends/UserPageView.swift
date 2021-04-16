@@ -258,7 +258,7 @@ struct UserPageView: View {
                                         group.notify(queue: .main)
                                         {
     
-                                                
+                                            goal = String(calorieGoal)
                                             calorieGoalString = goal
                                                 
                                             calorieGoal = Int(goal) ?? 0
