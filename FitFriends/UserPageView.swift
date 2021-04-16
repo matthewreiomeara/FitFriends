@@ -96,20 +96,23 @@ struct UserPageView: View {
                                     entryGroup.notify(queue: .main){
                                         if(msg != "error")
                                         {
-                                            exerciselist.removeAll()
                                             var arr = textToArray(text: exList)
-                                            let temp = convertToDictionary(text: String(arr[0]))
-                                            
-                                            while(!arr.isEmpty)
+                                            exerciselist.removeAll()
+                                            if(arr[0].contains("{"))
                                             {
-                                                var eid = 0
-                                                eid = Int(toString(temp!["e_id"]))!
-                                                print("THIS IS " + String(eid))
+                                                let temp = convertToDictionary(text: String(arr[0]))
                                                 
-                                                let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
-                                                
-                                                exerciselist.add(exercise: tempEx)
-                                                arr.remove(at: 0)
+                                                while(!arr.isEmpty)
+                                                {
+                                                    var eid = 0
+                                                    eid = Int(toString(temp!["e_id"]))!
+                                                    print("THIS IS " + String(eid))
+                                                    
+                                                    let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                                                    
+                                                    exerciselist.add(exercise: tempEx)
+                                                    arr.remove(at: 0)
+                                                }
                                             }
                                             print("NEW ENTRY ADDED " + text1)
                                         }
@@ -393,8 +396,9 @@ struct UserPageView: View {
         }
         .onAppear(){
             var arr = textToArray(text: exList)
-            if(arr[0].contains("+"))
+            if(arr[0].contains("{"))
             {
+                exerciselist.removeAll()
                 let temp = convertToDictionary(text: String(arr[0]))
                 
                 while(!arr.isEmpty)
