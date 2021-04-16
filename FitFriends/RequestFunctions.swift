@@ -638,6 +638,7 @@ func callOldEntry(_ token: String,_ date: String, _ completion: @escaping ([Stri
 func textToArray(text: String) -> [String.SubSequence] {
     var text1 = text
     text1 = text1.replacingOccurrences(of: "[\n", with: "", options: .literal, range: nil)
+    text1 = text1.replacingOccurrences(of: "]", with: "", options: .literal, range: nil)
     text1 = text1.replacingOccurrences(of: "  {", with: "{", options: .literal, range: nil)
     text1 = text1.replacingOccurrences(of: "  }", with: "}", options: .literal, range: nil)
     text1 = text1.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)

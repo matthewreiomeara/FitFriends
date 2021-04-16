@@ -97,18 +97,17 @@ struct UserPageView: View {
                                         if(msg != "error")
                                         {
                                             var arr = textToArray(text: exList)
-                                            exerciselist.removeAll()
-                                            if(arr[0].contains("{"))
+                                            if(arr.contains("{"))
                                             {
-                                                let temp = convertToDictionary(text: String(arr[0]))
-                                                
+                                                exerciselist.removeAll()
                                                 while(!arr.isEmpty)
                                                 {
-                                                    var eid = 0
-                                                    eid = Int(toString(temp!["e_id"]))!
-                                                    print("THIS IS " + String(eid))
+                                                    let temp = convertToDictionary(text: String(arr[0]))
+
+                                                    let eid = toString(temp!["e_id"])
+                                                    print("THIS IS " + eid)
                                                     
-                                                    let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                                                    let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
                                                     
                                                     exerciselist.add(exercise: tempEx)
                                                     arr.remove(at: 0)
@@ -396,18 +395,17 @@ struct UserPageView: View {
         }
         .onAppear(){
             var arr = textToArray(text: exList)
-            if(arr[0].contains("{"))
+            if(exList.contains("{"))
             {
                 exerciselist.removeAll()
-                let temp = convertToDictionary(text: String(arr[0]))
-                
                 while(!arr.isEmpty)
                 {
-                    var eid = 0
-                    eid = Int(toString(temp!["e_id"]))!
-                    print("THIS IS " + String(eid))
+                    let temp = convertToDictionary(text: String(arr[0]))
+
+                    let eid = toString(temp!["e_id"])
+                    print("THIS IS " + eid)
                     
-                    let tempEx = exerciseItem(id: Int(toString(temp!["e_id"]))!, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                    let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
                     
                     exerciselist.add(exercise: tempEx)
                     arr.remove(at: 0)
@@ -417,9 +415,46 @@ struct UserPageView: View {
         }
     }
     func deleteExercise(at offsets: IndexSet){
-        print("I RAN")
+        var copy = [exerciseItem]()
+        for i in 0 ..< exerciselist.items.count
+        {
+            copy.append(exerciselist.items[i])
+        }
+        
         exerciselist.items.remove(atOffsets: offsets)
 
+        var eid = -1
+        for i in 0 ..< exerciselist.items.count
+        {
+            if(exerciselist.items[i].id != copy[i].id)
+            {
+                eid = copy[i].id
+                break
+            }
+        }
+        
+        if (eid == -1)
+        {
+            eid = copy[copy.count-1].id
+        }
+        print(eid)
+        
+        let group = DispatchGroup()
+        var msg = ""
+        group.enter()
+        removeExercise(token, eid)
+        {
+            response in
+            msg = response
+            group.leave()
+        }
+        
+        group.notify(queue: .main)
+        {
+            print("DELETE " + msg)
+        }
+        
+        
     }
 }
 
