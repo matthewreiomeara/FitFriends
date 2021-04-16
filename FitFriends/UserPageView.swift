@@ -91,6 +91,8 @@ struct UserPageView: View {
                                         let dict = response
                                         msg = dict["error"]!
                                         exList = dict["exercise"] ?? ""
+                                        calList = dict["calories"] ?? ""
+                                        goal = dict["goal"] ?? ""
                                         entryGroup.leave()
                                     }
                                     entryGroup.notify(queue: .main){
@@ -105,13 +107,54 @@ struct UserPageView: View {
                                                     let temp = convertToDictionary(text: String(arr[0]))
 
                                                     let eid = toString(temp!["e_id"])
-                                                    print("THIS IS " + eid)
                                                     
                                                     let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
                                                     
                                                     exerciselist.add(exercise: tempEx)
                                                     arr.remove(at: 0)
                                                 }
+                                            }
+                                            var arr3 = textToArray(text: exList)
+                                            
+                                //=============================================
+                                            if(exList.contains("{"))
+                                            {
+                                                exerciselist.removeAll()
+                                                while(!arr3.isEmpty)
+                                                {
+                                                    let temp = convertToDictionary(text: String(arr3[0]))
+
+                                                    let eid = toString(temp!["e_id"])
+                                                    
+                                                    let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                                                    
+                                                    exerciselist.add(exercise: tempEx)
+                                                    arr3.remove(at: 0)
+                                                }
+                                            }
+                                //=============================================
+                                            var arr2 = textToArray(text: calList)
+                                            if(calList.contains("{"))
+                                            {
+                                                var sum = 0
+                                                
+                                                while(!arr2.isEmpty)
+                                                {
+                                                    let temp = convertToDictionary(text: String(arr2[0]))
+
+                                                    let cal = toString(temp!["amount"])
+                                                    print("THIS IS " + cal)
+                                                    
+                                                    sum += Int(cal) ?? 0
+                                                    
+                                                    arr2.remove(at: 0)
+                                                }
+                                                
+                                                caloriesHit = sum
+                                                
+                                                calorieGoal = Int(goal) ?? 0
+                                                
+                                                
                                             }
                                             print("NEW ENTRY ADDED " + text1)
                                         }
@@ -199,6 +242,26 @@ struct UserPageView: View {
                                         self.calorieGoalString = ""
                                         self.caloriesHit = 0
                                         self.finalPercentage = 0
+                                        
+                                        let group = DispatchGroup()
+                                        var msg = ""
+                                        group.enter()
+                                        getCaloriesGoal(token, text1, calorieGoal){
+                                            response in
+                                            msg = response
+                                            group.leave()
+                                        }
+                                        group.notify(queue: .main)
+                                        {
+    
+                                                
+                                            calorieGoalString = goal
+                                                
+                                            calorieGoal = Int(goal) ?? 0
+
+                                            print("UPDATE " + msg)
+                                        }
+                                        
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
@@ -395,6 +458,8 @@ struct UserPageView: View {
         }
         .onAppear(){
             var arr = textToArray(text: exList)
+            
+//=============================================
             if(exList.contains("{"))
             {
                 exerciselist.removeAll()
@@ -403,13 +468,38 @@ struct UserPageView: View {
                     let temp = convertToDictionary(text: String(arr[0]))
 
                     let eid = toString(temp!["e_id"])
-                    print("THIS IS " + eid)
                     
                     let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
                     
                     exerciselist.add(exercise: tempEx)
                     arr.remove(at: 0)
                 }
+            }
+//=============================================
+            var arr2 = textToArray(text: calList)
+            if(calList.contains("{"))
+            {
+                var sum = 0
+                
+                while(!arr2.isEmpty)
+                {
+                    let temp = convertToDictionary(text: String(arr2[0]))
+
+                    let cal = toString(temp!["amount"])
+                    print("THIS IS " + cal)
+                    
+                    sum += Int(cal) ?? 0
+                    
+                    arr2.remove(at: 0)
+                }
+                
+                caloriesHit = sum
+                caloriesHitString = "0"
+                calorieGoalString = goal
+                
+                calorieGoal = Int(goal) ?? 0
+                
+                
             }
             
         }

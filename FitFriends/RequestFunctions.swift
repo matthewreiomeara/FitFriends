@@ -517,7 +517,7 @@ func callNewEntry(_ token: String,_ completion: @escaping ([String:String]) -> V
     ]
     
     //data to grab from request
-    var dict = ["date":"", "d_id": "", "calories": "", "exercise": "", "p_fk" : "", "error": "error"]
+    var dict = ["date":"", "d_id": "", "calories": "", "exercise": "", "p_fk" : "", "goal": "",  "error": "error"]
     
     //Requests at (fitfriends, POST, data to go in, JSON format)
     AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers) .responseJSON
@@ -546,6 +546,7 @@ func callNewEntry(_ token: String,_ completion: @escaping ([String:String]) -> V
                             dict["d_id"] = json["d_id"].rawString() ??  ""
                             dict["calories"] = json["calories"].rawString() ??  ""
                             dict["exercise"] = json["exercises"].rawString() ??  ""
+                            dict["goal"] = json["calorie_goal"].rawString() ??  ""
                             dict["p_fk"] = json["p_fk"].rawString() ??  ""
                             dict["error"] = "good"
                             completion(dict)
@@ -587,7 +588,7 @@ func callOldEntry(_ token: String,_ date: String, _ completion: @escaping ([Stri
     ]
     
     //data to grab from request
-    var dict = ["date":"", "d_id": "", "calories": "", "exercise": "", "p_fk" : "", "error": "error"]
+    var dict = ["date":"", "d_id": "", "calories": "", "exercise": "", "p_fk" : "", "goal": "", "error": "error"]
     
     //Requests at (fitfriends, POST, data to go in, JSON format)
     AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers) .responseJSON
@@ -616,7 +617,7 @@ func callOldEntry(_ token: String,_ date: String, _ completion: @escaping ([Stri
                             dict["d_id"] = json["d_id"].rawString() ??  ""
                             dict["calories"] = json["calories"].rawString() ??  ""
                             dict["exercise"] = json["exercises"].rawString() ??  ""
-                            print(json["exercise"].rawString() ??  "")
+                            dict["goal"] = json["calorie_goal"].rawString() ??  ""
                             dict["error"] = "good"
                             completion(dict)
                        }
@@ -657,4 +658,52 @@ func convertToDictionary(text: String) -> [String: Any]? {
         }
     }
     return nil
+}
+
+//===========================Remove Calories================================
+//Sets the calories for today's date
+func getCaloriesGoal(_ token: String,_ date: String,_ goal: Int, _ completion: @escaping (String) -> Void)
+{
+    //URL with endpoint to sent to
+    let url = "https://fit-friends.herokuapp.com/api/user/info/update/caloriegoal"
+
+    //Parameters to input
+    var params = ["date": "", "calorie_goal": 0] as [String : Any]
+
+    params["date"] = date
+    params["calorie_goal"] = goal
+    
+    //Headers for the request with the token
+    let headers: HTTPHeaders = [
+        "Content-Type": "application/json",
+        "Authorization": token
+    ]
+    
+    //data to grab from request
+    var message = "error"
+    
+    //Requests at (fitfriends, POST, data to go in, JSON format)
+    AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers) .responseJSON
+    { response in
+           //Loads into switch
+           switch response.result {
+                //If succesfully reaches site
+                case .success(_):
+                    //On success prints corresponding values
+                   if (response.response?.statusCode == 200)
+                   {
+                        message = "Success"
+                    
+                        completion(message)
+                   }
+                   else
+                   {
+                        completion(message);
+                   }
+                    break
+           case .failure(_):
+            print("INVALID URL")
+            break
+           }
+    }
 }

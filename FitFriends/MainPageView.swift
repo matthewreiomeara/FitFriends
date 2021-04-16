@@ -16,6 +16,8 @@ var name = ""
 var rmodel = 0
 var model = ""
 var exList = ""
+var calList = ""
+var goal = ""
 
 struct MainPageView: View {
     var body: some View {
@@ -208,13 +210,15 @@ struct Login : View {
                                     let dict = response
                                     message = dict["error"]!
                                     exList = dict["exercise"] ?? ""
+                                    calList = dict["calories"] ?? ""
+                                    goal = dict["goal"] ?? ""
                                     entryGroup.leave()
                                 }
                                 entryGroup.notify(queue: .main){
                                     if(message != "error")
                                     {
                                         
-                                        print("EXLIST " + exList)
+                                        print("EXLIST " + calList)
                                         print("NEW ENTRY ADDED")
                                     }
                                     else{
