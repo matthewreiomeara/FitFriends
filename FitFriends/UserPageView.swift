@@ -40,6 +40,7 @@ struct UserPageView: View {
     @State var percentageToInt: Int = 0
     @State var finalPercentage: CGFloat = 0
     @State var addedCals : Int = 0
+    
     //@State var roleModel: String = ""
     
     //role model info, has a number and a title
@@ -96,6 +97,7 @@ struct UserPageView: View {
                                         entryGroup.leave()
                                     }
                                     entryGroup.notify(queue: .main){
+                                        exerciselist.removeAll()
                                         if(msg != "error")
                                         {
                                             var arr = textToArray(text: exList)
@@ -176,6 +178,8 @@ struct UserPageView: View {
                                 .labelsHidden()
                                 .datePickerStyle(WheelDatePickerStyle())
                         }
+                    }.onAppear(){
+                        
                     }
                     //Two stacks that will eventually hold calories and rolemodel displays
                     VStack {
@@ -381,6 +385,8 @@ struct UserPageView: View {
                             Button(action: {
                                 withAnimation {
                                     self.addExercise.toggle()
+                                    
+
                                 }
                                 }) {
                                     Image(systemName: "plus.circle.fill")
@@ -457,24 +463,40 @@ struct UserPageView: View {
             roleModel.roleModelTitle = model
         }
         .onAppear(){
-            var arr = textToArray(text: exList)
             
-//=============================================
-            if(exList.contains("{"))
-            {
-                exerciselist.removeAll()
-                while(!arr.isEmpty)
-                {
-                    let temp = convertToDictionary(text: String(arr[0]))
-
-                    let eid = toString(temp!["e_id"])
-                    
-                    let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
-                    
-                    exerciselist.add(exercise: tempEx)
-                    arr.remove(at: 0)
-                }
+            let entryGroup = DispatchGroup()
+            entryGroup.enter()
+            callOldEntry(token, text1){ response in
+                // Do your stuff here
+               //self.token = "Bearer " + response
+                let dict = response
+                exList = dict["exercise"] ?? ""
+                calList = dict["calories"] ?? ""
+                goal = dict["goal"] ?? ""
+                entryGroup.leave()
             }
+            entryGroup.notify(queue: .main){
+                var arr = textToArray(text: exList)
+                exerciselist.removeAll()
+    //=============================================
+                if(exList.contains("{"))
+                {
+                    exerciselist.removeAll()
+                    while(!arr.isEmpty)
+                    {
+                        let temp = convertToDictionary(text: String(arr[0]))
+
+                        let eid = toString(temp!["e_id"])
+                        
+                        let tempEx = exerciseItem(id: Int(eid) ?? 0, name: toString(temp!["description"]), weight: toString(temp!["amount"]), reps: toString(temp!["reps"]), sets: toString(temp!["sets"]))
+                        
+                        exerciselist.add(exercise: tempEx)
+                        arr.remove(at: 0)
+                    }
+                }
+                print("List updated")
+            }
+            
 //=============================================
             var arr2 = textToArray(text: calList)
             if(calList.contains("{"))
