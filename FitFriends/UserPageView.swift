@@ -385,11 +385,22 @@ struct UserPageView: View {
                                             }
                                         }
                                     }){
-                                    Text("View " + roleModel.roleModelTitle + " Plan")                                    .font(.system(size: 15,weight:.bold))
-                                        .frame(width:UIScreen.main.bounds.width/2.25,height:30)
-                                        .background(Color("Color2"))
-                                        .foregroundColor(.white)
-                                        .cornerRadius(5)
+                                        if roleModel.roleModel == 0 {
+                                            Text("No Plan Available")
+                                                .font(.system(size: 15,weight:.bold))
+                                                .frame(width:UIScreen.main.bounds.width/2.25,height:30)
+                                                .background(Color("Color2"))
+                                                .foregroundColor(.white)
+                                                .cornerRadius(5)
+                                        } else {
+                                        Text("View " + roleModel.roleModelTitle + " Plan")
+                                            .font(.system(size: 15,weight:.bold))
+                                            .frame(width:UIScreen.main.bounds.width/2.25,height:30)
+                                            .background(Color("Color2"))
+                                            .foregroundColor(.white)
+                                            .cornerRadius(5)
+                                        }
+                                    
                                     }.buttonStyle(BorderlessButtonStyle())
                                 }.padding(.bottom,20)
                             }.frame(minWidth: 0, maxWidth: .infinity)
