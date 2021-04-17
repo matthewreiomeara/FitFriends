@@ -28,6 +28,9 @@ struct UserPageView: View {
     //navigation to rolemodelview
     @State var showRoleModelView = false
     //variable holding current date/date chosen by user
+    @State var showBeginnerRoleModelView = false
+    @State var showIntermediateRoleModelView = false
+    @State var showAdvancedRoleModelView = false
     @State var selectedDate = Date()
     @State var isDateShown = false
     //formats date for UI purposes
@@ -59,7 +62,7 @@ struct UserPageView: View {
     }
     
     let backgroundCol = UIColor(red: 114/255, green: 159/255,blue: 106/255, alpha: 1.0)
-//    let backgroundCol = UIColor(red: 38/255, green: 68/255,blue: 33/255, alpha: 1.0)
+
     init() {
         
         UITableView.appearance().backgroundColor = backgroundCol
@@ -362,6 +365,33 @@ struct UserPageView: View {
                                     }.buttonStyle(BorderlessButtonStyle())
                                     .padding(.bottom,10)
                                 }
+                                HStack{
+                                    NavigationLink(destination: beginnerRoleModelView(), isActive: $showBeginnerRoleModelView) {
+                                    }
+                                    NavigationLink(destination: intermediateRoleModelView(), isActive: $showIntermediateRoleModelView) {
+                                    }
+                                    NavigationLink(destination: advancedRoleModelView(), isActive: $showAdvancedRoleModelView) {
+                                    }
+                                    Button(action: {
+                                        withAnimation {
+                                            if roleModel.roleModel == 1 {
+                                                self.showBeginnerRoleModelView.toggle()
+                                            } else if roleModel.roleModel == 2 {
+                                                self.showIntermediateRoleModelView.toggle()
+                                            } else if roleModel.roleModel == 3 {
+                                                self.showAdvancedRoleModelView.toggle()
+                                            } else {
+                                                
+                                            }
+                                        }
+                                    }){
+                                    Text("View " + roleModel.roleModelTitle + " Plan")                                    .font(.system(size: 15,weight:.bold))
+                                        .frame(width:UIScreen.main.bounds.width/2.25,height:30)
+                                        .background(Color("Color2"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(5)
+                                    }.buttonStyle(BorderlessButtonStyle())
+                                }.padding(.bottom,20)
                             }.frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
@@ -427,22 +457,9 @@ struct UserPageView: View {
                         .onDelete(perform: deleteExercise)
                     }//.frame(maxWidth:.infinity)
                 }
-                
-                .navigationBarTitle("Main", displayMode: .inline)
+                .navigationBarTitle("FitFriends", displayMode: .inline)
                     .navigationBarItems(trailing:
                         HStack(spacing: 15) {
-                            
-                            NavigationLink(destination: RoleModelView(), isActive: $showRoleModelView) {
-                            }
-                            Button(action: {
-                                withAnimation {
-                                    self.showRoleModelView.toggle()
-                                }
-                            }){
-                            Image(systemName: "person.2.square.stack.fill")
-                                .font(.title)
-                                .foregroundColor(Color("Color"))
-                            }.buttonStyle(BorderlessButtonStyle())
                             
                             
                             NavigationLink(destination: UserProfileView(), isActive: $showUserProfileView) {

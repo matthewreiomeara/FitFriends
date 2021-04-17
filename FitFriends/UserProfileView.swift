@@ -19,6 +19,7 @@ struct UserProfileView: View {
     
     var body: some View {
         ZStack{
+        //background color
             Color("Color").ignoresSafeArea(.all)
             VStack {
         //FitFriends logo
@@ -27,8 +28,10 @@ struct UserProfileView: View {
                 .frame(width: UIScreen.main.bounds.width/2, height:UIScreen.main.bounds.height/4.5)
                 .padding(.top,-(UIScreen.main.bounds.width/2))
             
+        //vertical stack holding user stats
             VStack{
                 VStack{
+                    //horizontal stack holding height and save button
                     HStack(spacing: 15){
                         HStack{
                             Image(systemName: "ruler")
@@ -55,6 +58,7 @@ struct UserProfileView: View {
                     
                     Divider()
                     
+                    //horizontal stack holding weight and save button
                     HStack(spacing: 15){
                         HStack{
                             Image(systemName: "scalemass")
@@ -81,6 +85,7 @@ struct UserProfileView: View {
 
                     Divider()
                     
+                    //horizontal stack holding gender and save button
                     HStack(spacing: 15){
                         HStack{
                             Image(systemName: "person")

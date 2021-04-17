@@ -36,8 +36,8 @@ struct RoleModelView: View {
                     }
                     VStack {
                         NavigationLink(destination: beginnerRoleModelView()){
-                            Text("See Beginner Workout Plan").font(.headline)
-                            .padding(.leading,10)
+                            Text("See Beginner Workout Plan").font(.system(size: 15,weight:.bold))
+                                .padding(.leading,10)
                             Image(systemName: "chevron.right.2")
                         }
                         .padding(.bottom,10)
@@ -90,7 +90,7 @@ struct RoleModelView: View {
                     }
                     VStack {
                         NavigationLink(destination: intermediateRoleModelView()){
-                            Text("See Intermediate Workout Plan").font(.headline)
+                            Text("See Intermediate Workout Plan").font(.system(size: 14, weight: .bold))
                             Image(systemName: "chevron.right.2")
                         }
                         .padding(.bottom,10)
@@ -142,7 +142,7 @@ struct RoleModelView: View {
                     }
                     VStack {
                         NavigationLink(destination: advancedRoleModelView()){
-                            Text("See Advanced Workout Plan").font(.headline)
+                            Text("See Advanced Workout Plan").font(.system(size: 15,weight:.bold))
                                 .padding(.leading,10)
                             Image(systemName: "chevron.right.2")
                         }
