@@ -11,8 +11,11 @@ import SwiftUI
 struct UserProfileView: View {
     
     @State var height: String = ""
+    @State var heightSaved: String = ""
     @State var weight: String = ""
+    @State var weightSaved: String = ""
     @State var gender: String = ""
+    @State var genderSaved: String = ""
     
     var body: some View {
         ZStack{
@@ -27,31 +30,79 @@ struct UserProfileView: View {
             VStack{
                 VStack{
                     HStack(spacing: 15){
-                        Image(systemName: "ruler")
+                        HStack{
+                            Image(systemName: "ruler")
                             .resizable()
                             .frame(width:20, height: 15)
                             .foregroundColor(.black)
-                        TextField("Height", text: self.$height)
+                            Text("Height:")
+                        }
+                        TextField("", text: self.$height)
+                        Button(action: {
+                            withAnimation {
+                                self.heightSaved = height
+                                self.height = heightSaved
+                            }
+                        }){
+                        Text("Save")
+                            .bold()
+                            .frame(width:UIScreen.main.bounds.width/4,height:30)
+                            .background(Color("Color"))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                        }.buttonStyle(BorderlessButtonStyle())
                     }.padding(.vertical, 20)
                     
                     Divider()
                     
                     HStack(spacing: 15){
-                        Image(systemName: "scalemass")
-                            .resizable()
-                            .frame(width:20, height: 18)
-                            .foregroundColor(.black)
-                        TextField("Weight", text: self.$height)
+                        HStack{
+                            Image(systemName: "scalemass")
+                                .resizable()
+                                .frame(width:20, height: 18)
+                                .foregroundColor(.black)
+                            Text("Weight:")
+                        }
+                        TextField("", text: self.$weight)
+                        Button(action: {
+                            withAnimation {
+                                self.weightSaved = weight
+                                self.weight = weightSaved
+                            }
+                        }){
+                        Text("Save")
+                            .bold()
+                            .frame(width:UIScreen.main.bounds.width/4,height:30)
+                            .background(Color("Color"))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                        }.buttonStyle(BorderlessButtonStyle())
                     }.padding(.vertical, 20)
 
                     Divider()
                     
                     HStack(spacing: 15){
-                        Image(systemName: "person")
+                        HStack{
+                            Image(systemName: "person")
                             .resizable()
                             .frame(width:20, height: 18)
                             .foregroundColor(.black)
-                        TextField("Gender", text: self.$gender)
+                            Text("Gender:")
+                        }
+                        TextField("", text: self.$gender)
+                        Button(action: {
+                            withAnimation {
+                                self.genderSaved = gender
+                                self.gender = genderSaved
+                            }
+                        }){
+                        Text("Save")
+                            .bold()
+                            .frame(width:UIScreen.main.bounds.width/4,height:30)
+                            .background(Color("Color"))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                        }.buttonStyle(BorderlessButtonStyle())
                     }.padding(.vertical, 20)
                 }
                 .padding(.vertical)
@@ -62,6 +113,7 @@ struct UserProfileView: View {
             }
             .padding(.top,-(UIScreen.main.bounds.width/5))
             }.padding()
+
         }.navigationTitle(Text((name)+"'s Stats"))
     }
 }

@@ -59,6 +59,7 @@ struct UserPageView: View {
     }
     
     let backgroundCol = UIColor(red: 114/255, green: 159/255,blue: 106/255, alpha: 1.0)
+//    let backgroundCol = UIColor(red: 38/255, green: 68/255,blue: 33/255, alpha: 1.0)
     init() {
         
         UITableView.appearance().backgroundColor = backgroundCol
@@ -352,7 +353,7 @@ struct UserPageView: View {
                                             self.showRoleModelView.toggle()
                                         }
                                     }){
-                                    Text("Choose RoleModel")
+                                    Text("Choose Role Model")
                                         .bold()
                                         .frame(width:UIScreen.main.bounds.width/2.25,height:30)
                                         .background(Color("Color2"))
