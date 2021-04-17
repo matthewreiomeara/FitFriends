@@ -363,7 +363,8 @@ struct UserPageView: View {
                                 }
                             }.frame(minWidth: 0, maxWidth: .infinity)
                         }
-                    }.background(Color("Color"))
+                    }
+                    .background(Color("Color"))
                     .padding(.bottom,-10)
                     .padding(.top,-20)
 
