@@ -266,7 +266,7 @@ struct beginnerRoleModelView: View {
                 Text("Rest Day")
             }
 
-        }.listStyle(GroupedListStyle())
+        }.listStyle(GroupedListStyle()).navigationTitle("Beginner Workout Plan").navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -349,7 +349,7 @@ struct intermediateRoleModelView: View {
                 Text("Rest Day")
             }
 
-        }.listStyle(GroupedListStyle())
+        }.listStyle(GroupedListStyle()).navigationTitle("Intermediate Workout Plan").navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -437,7 +437,7 @@ struct advancedRoleModelView: View {
                 Text("Rest Day")
             }
 
-        }.listStyle(GroupedListStyle())
+        }.listStyle(GroupedListStyle()).navigationTitle("Advanced Workout Plan").navigationBarTitleDisplayMode(.inline)
     }
 }
 
