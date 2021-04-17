@@ -329,7 +329,7 @@ struct UserPageView: View {
                             }.padding(.trailing,UIScreen.main.bounds.width/12)
                             VStack{
                                 HStack{
-                                    Text("RoleModel:")
+                                    Text("Role Model:")
                                         .bold()
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
