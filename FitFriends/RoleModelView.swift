@@ -236,33 +236,33 @@ struct beginnerRoleModelView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(beginnerMonday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(beginnerTuesday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 Text("Rest Day")
             }
-            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(beginnerThursday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(beginnerFriday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 Text("Rest Day")
             }
-            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)){
                 Text("Rest Day")
             }
 
@@ -317,35 +317,35 @@ struct intermediateRoleModelView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(intermediateMonday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(intermediateTuesday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(intermediateWednesday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(intermediateThursday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(intermediateFriday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 Text("Rest Day")
             }
-            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 Text("Rest Day")
             }
 
@@ -402,38 +402,38 @@ struct advancedRoleModelView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Monday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)){
                 ForEach(advancedMonday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Tuesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(advancedTuesday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Wednesday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(advancedWednesday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(advancedThursday, id:\.self) {
                     Text($0)
                 }
 
             }
-            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Friday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)){
                 ForEach(advancedFriday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Saturday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 ForEach(advancedSaturday, id:\.self) {
                     Text($0)
                 }
             }
-            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20))) {
+            Section(header: Text("Sunday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
                 Text("Rest Day")
             }
 
