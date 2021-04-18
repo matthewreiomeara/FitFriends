@@ -487,7 +487,7 @@ struct UserPageView: View {
                             //navigation link that sends users to ExerciseListView once the "plus" button is pressed
                             NavigationLink(destination: ExerciseListView(), isActive: $addExercise) {
                             }
-                            .navigationTitle("Main")
+                            .navigationTitle("FitFriends")
                             .navigationBarTitleDisplayMode(.inline)
 
                             
