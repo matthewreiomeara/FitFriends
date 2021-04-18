@@ -273,8 +273,68 @@ struct UserPageView: View {
                                         }
                                         group.notify(queue: .main)
                                         {
+                                            let entryGroup = DispatchGroup()
+                                            entryGroup.enter()
+                                            callOldEntry(token, text1){ response in
+                                                // Do your stuff here
+                                               //self.token = "Bearer " + response
+                                                let dict = response
+                                                calList = dict["calories"] ?? ""
+                                                entryGroup.leave()
+                                            }
+                                            entryGroup.notify(queue: .main){
+                                                print("Set CalList")
+                                            }
     
                                             goal = String(calorieGoal)
+                                            
+                                            var arr2 = textToArray(text: calList)
+                                            if(calList.contains("{"))
+                                            {
+                                                var sum = 0
+                                                
+                                                while(!arr2.isEmpty)
+                                                {
+                                                    let temp = convertToDictionary(text: String(arr2[0]))
+
+                                                    let cal = toString(temp!["amount"])
+                                                    print("THIS IS " + cal)
+                                                    
+                                                    sum += Int(cal) ?? 0
+                                                    
+                                                    arr2.remove(at: 0)
+                                                }
+                                                
+                                                var mes = ""
+                                                let addGroup = DispatchGroup()
+                                                addGroup.enter()
+                                                addOldCalories(token, text1, -1 * sum, "a", "b"){ response in
+                                                    //Saves the response as a dictionary
+                                                    mes = response
+
+                                                    addGroup.leave()
+                                                 }
+
+                                                addGroup.notify(queue: .main) {
+                                                    //Update some textfield using the dailyInfo
+                                                    print("THIS : " + mes)
+                                                 }
+                                                
+                                                caloriesHit = sum
+                                                caloriesHitString = "0"
+                                                calorieGoalString = goal
+                                                
+                                                calorieGoal = Int(goal) ?? 0
+                                                //print(calorieGoal)
+                                                self.caloriesHitFloat = CGFloat(caloriesHit)
+                                                self.calorieGoalFloat = CGFloat(calorieGoal)
+                                                //get percentage
+                                                self.finalPercentage = (caloriesHitFloat/calorieGoalFloat) + finalPercentage/100
+                                                //turn percentage into correct float
+                                                self.finalPercentage = finalPercentage * 100
+                                                
+                                            }
+                                            
                                             calorieGoalString = goal
                                                 
                                             calorieGoal = Int(goal) ?? 0

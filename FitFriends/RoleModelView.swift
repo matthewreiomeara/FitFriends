@@ -51,6 +51,7 @@ struct RoleModelView: View {
                             aGroup.enter()
                             setRoleModel(token,"Beginner") { response in
                                 //Saves the response as a dictionary
+                                rmodel = 1
                                 message = response
                                 aGroup.leave()
                             }
@@ -110,6 +111,7 @@ struct RoleModelView: View {
                                 
                                 // Waits for request to finish
                                 aGroup.notify(queue: .main) {
+                                    rmodel = 2
                                     print("model" + message)
                                 }
                                 
@@ -157,6 +159,7 @@ struct RoleModelView: View {
                                 aGroup.enter()
                                 setRoleModel(token,"Beginner") { response in
                                     //Saves the response as a dictionary
+                                    rmodel = 3
                                     message = response
                                     aGroup.leave()
                                 }
