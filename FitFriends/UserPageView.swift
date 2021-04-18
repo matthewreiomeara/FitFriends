@@ -221,7 +221,7 @@ struct UserPageView: View {
                                         .padding(.leading,10)
                                         .padding(.trailing,10)
                                         .padding(.bottom,30)
-                                        .border(Color("Color4"),width:2)
+                                        //.border(Color("Color4"),width:2)
                                 } else if roleModel.roleModel == 2 {
                                     Image("intermediate")
                                         .resizable()
@@ -232,7 +232,7 @@ struct UserPageView: View {
                                         .padding(.trailing,10)
 
                                         .padding(.bottom,30)
-                                        .border(Color("Color4"),width:2)
+                                        //.border(Color("Color4"),width:2)
                                 } else if roleModel.roleModel == 3 {
                                     Image("advanced")
                                         .resizable()
@@ -242,7 +242,7 @@ struct UserPageView: View {
                                         .padding(.leading,10)
                                         .padding(.trailing,10)
                                         .padding(.bottom,30)
-                                        .border(Color("Color4"),width:2)
+                                        //.border(Color("Color4"),width:2)
                                 } else {
                                     Image("empty")
                                         .resizable()
@@ -252,7 +252,7 @@ struct UserPageView: View {
                                         .padding(.leading,10)
                                         .padding(.trailing,10)
                                         .padding(.bottom,30)
-                                        .border(Color("Color4"),width:2)
+                                        //.border(Color("Color4"),width:2)
                                 }
                             }.frame(minWidth: 0, maxWidth: .infinity)
                             .padding(.leading,UIScreen.main.bounds.width/15)

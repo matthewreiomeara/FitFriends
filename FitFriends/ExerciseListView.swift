@@ -102,8 +102,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Chest").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each chestExcerise and formats to a row
@@ -117,8 +118,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Triceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each tricepExcerise and formats to a row
@@ -132,8 +134,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Back").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each backExcerise and formats to a row
@@ -147,8 +150,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Biceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each bicepExcerise and formats to a row
@@ -166,8 +170,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Shoulders").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each shoulderExcerise and formats to a row
@@ -181,8 +186,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Quadriceps").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each quadExcerise and formats to a row
@@ -196,8 +202,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Hamstrings").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each hamstringExcerise and formats to a row
@@ -211,8 +218,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Calves").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each calfExcerise and formats to a row
@@ -226,8 +234,9 @@ struct ExerciseListView: View {
                     HStack{
                     Text("Abdominals").font(.largeTitle)
                     }.frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height/12)
-                    .background(Color("Color"))
+                    .background(Color("Color2"))
                     .foregroundColor(.white)
+                    .border(Color("Color"),width: 3)
                     .padding(.leading,-20)
                     
                     //grabs each abExcerise and formats to a row

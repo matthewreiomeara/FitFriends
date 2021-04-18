@@ -25,6 +25,9 @@ struct RoleModelView: View {
                         .foregroundColor(.white)
                 }.background(Color("Color"))
                 .padding(.top,(UIScreen.main.bounds.width/8))
+                .padding(.leading,10)
+                .padding(.trailing,10)
+                .border(Color("Color4"),width: 2)
 
                 
                 HStack{
@@ -335,7 +338,10 @@ struct intermediateRoleModelView: View {
                     Text($0)
                 }
             }
-            Section(header: Text("Thursday").foregroundColor(.white).font(.system(size: 20)).padding(.bottom,15)) {
+            Section(header: Text("Thursday").foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding(.bottom,15))
+                        {
                 ForEach(intermediateThursday, id:\.self) {
                     Text($0)
                 }
