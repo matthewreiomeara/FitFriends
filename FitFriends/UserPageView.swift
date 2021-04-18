@@ -70,6 +70,8 @@ struct UserPageView: View {
     }
     
     let backgroundCol = UIColor(red: 114/255, green: 159/255,blue: 106/255, alpha: 1.0)
+    
+    //let backgroundCol = UIColor(red: 98/255, green: 151/255,blue: 88/255, alpha: 1.0)
 
     init() {
         
@@ -165,7 +167,6 @@ struct UserPageView: View {
                                                 }
                                                 
                                                 caloriesHit = sum
-                                                //print(caloriesHit)
                                                 
                                                 calorieGoal = Int(goal) ?? 0
 
@@ -216,24 +217,45 @@ struct UserPageView: View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                        .padding()
+                                        .padding(.leading,10)
+                                        .padding(.trailing,10)
+                                        .padding(.bottom,30)
+                                        .border(Color("Color4"),width:2)
                                 } else if roleModel.roleModel == 2 {
                                     Image("intermediate")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                        .padding()
+                                        .padding(.leading,10)
+                                        .padding(.trailing,10)
+
+                                        .padding(.bottom,30)
+                                        .border(Color("Color4"),width:2)
                                 } else if roleModel.roleModel == 3 {
                                     Image("advanced")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                        .padding()
+                                        .padding(.leading,10)
+                                        .padding(.trailing,10)
+                                        .padding(.bottom,30)
+                                        .border(Color("Color4"),width:2)
                                 } else {
                                     Image("empty")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width:UIScreen.main.bounds.width/3,height:UIScreen.main.bounds.width/3)
+                                        .padding()
+                                        .padding(.leading,10)
+                                        .padding(.trailing,10)
+                                        .padding(.bottom,30)
+                                        .border(Color("Color4"),width:2)
                                 }
                             }.frame(minWidth: 0, maxWidth: .infinity)
-                            .padding(.leading,UIScreen.main.bounds.width/10)
+                            .padding(.leading,UIScreen.main.bounds.width/15)
                             .padding(.top,15)
                         }.padding(.bottom, 10)
                         HStack{
@@ -241,11 +263,14 @@ struct UserPageView: View {
                                 HStack {
                                     Text("Calorie Goal:")
                                         .bold()
-                                        .font(.system(size:15))
-                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                        .font(.system(size:14))
+                                        .frame(width:UIScreen.main.bounds.width/4.5,height:23)
                                         .foregroundColor(.white)
+                                        .background(Color("Color2"))
+                                        
 
                                     TextField("0", text: self.$calorieGoalString)
+                                        //.padding(.leading,5)
                                         .modifier(PlaceholderStyle(showPlaceHolder: calorieGoalString.isEmpty, placeholder: "0"))
                                         .foregroundColor(.white)
                                         .keyboardType(.numberPad)
@@ -256,7 +281,7 @@ struct UserPageView: View {
                                             }
                                         }
                                         .frame(width: UIScreen.main.bounds.width/10)
-                                        .padding(.leading,-10)
+                                        //.padding(.leading,-10)
                                     Button(action: {
                                         self.calorieGoal = Int(calorieGoalString) ?? 0
                                         self.calorieGoalString = ""
@@ -345,14 +370,17 @@ struct UserPageView: View {
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
+                                            .padding(.leading,10)
                                     }
-                                }
+                                }.padding(.leading,10)
                                 HStack {
                                     Text("Add Calories:")
                                         .bold()
-                                        .font(.system(size: 15))
-                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                        .font(.system(size: 14))
+                                        .frame(width:UIScreen.main.bounds.width/4.5,height:25)
                                         .foregroundColor(.white)
+                                        .background(Color("Color2"))
+                                        
 
                                     TextField("0", text: self.$caloriesHitString)
                                         .modifier(PlaceholderStyle(showPlaceHolder: caloriesHitString.isEmpty, placeholder: "0"))
@@ -365,7 +393,7 @@ struct UserPageView: View {
                                             }
                                         }
                                         .frame(width: UIScreen.main.bounds.width/10)
-                                        .padding(.leading,-10)
+                                        //.padding(.leading,-10)
                                     Button(action: {
                                         //grab string int and turn into int or 0
                                         self.addedCals = Int(caloriesHitString) ?? 0
@@ -399,8 +427,9 @@ struct UserPageView: View {
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .foregroundColor(.white)
+                                            .padding(.leading,10)
                                     }
-                                }
+                                }.padding(.leading,10)
                                 //non completed stack for removing calories if implemented
                                // HStack {
 //                                    Text("Remove Calories:")
@@ -457,25 +486,36 @@ struct UserPageView: View {
 //                                    }
 //                                }
                               
-                                .padding(.bottom,10)
-                            }.padding(.trailing,UIScreen.main.bounds.width/12)
+                                //.padding(.bottom,10)
+                            }.padding(.trailing,UIScreen.main.bounds.width/12).padding(.top,-20)
                             VStack{
                                 HStack{
+                                    if roleModel.roleModel == 2 {
                                     Text("Role Model:")
                                         .bold()
                                         .font(.system(size: 15))
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
                                         .foregroundColor(.white)
+                                        .padding(.leading,-5)
+                                    } else {
+                                        Text("Role Model:")
+                                            .bold()
+                                            .font(.system(size: 15))
+                                            .frame(width:UIScreen.main.bounds.width/4,height:25)
+                                            .foregroundColor(.white)
+                                            .padding(.leading,15)
+                                    }
                                     
                                         
                                         
                                     TextField("None", text: self.$roleModel.roleModelTitle)
                                         .foregroundColor(.white)
                                         .frame(width:UIScreen.main.bounds.width/4,height:25)
-                                        .padding(.leading,-15)
+                                        .padding(.leading,-13)
                                         .font(.system(size:15))
                                     
-                                }
+                                }.padding(.bottom,15)
+                                .padding(.top,-50)
                                 HStack{
                                     NavigationLink(destination: RoleModelView(), isActive: $showRoleModelView) {
                                     }
@@ -492,6 +532,7 @@ struct UserPageView: View {
                                         .cornerRadius(5)
                                     }.buttonStyle(BorderlessButtonStyle())
                                     .padding(.bottom,10)
+                                    .padding(.leading,-10)
                                 }
                                 HStack{
                                     NavigationLink(destination: beginnerRoleModelView(), isActive: $showBeginnerRoleModelView) {
@@ -520,6 +561,7 @@ struct UserPageView: View {
                                                 .background(Color("Color2"))
                                                 .foregroundColor(.white)
                                                 .cornerRadius(5)
+                                                .padding(.leading,-10)
                                         } else {
                                         Text("View " + roleModel.roleModelTitle + " Plan")
                                             .font(.system(size: 15,weight:.bold))
@@ -527,6 +569,7 @@ struct UserPageView: View {
                                             .background(Color("Color2"))
                                             .foregroundColor(.white)
                                             .cornerRadius(5)
+                                            .padding(.leading,-10)
                                         }
                                     
                                     }.buttonStyle(BorderlessButtonStyle())
@@ -535,12 +578,17 @@ struct UserPageView: View {
                         }
                     }
                     .background(Color("Color"))
-                    .padding(.bottom,-10)
+                    .border(Color("Color4"),width:2)
+                    .padding(.bottom,-8)
                     .padding(.top,-20)
+                    .padding(.trailing,-10)
+                    .padding(.leading,-10)
+                    
 
 
                     //list displaying exercise title and exercises to be added
-                    List {
+                    VStack {
+                        List {
                         HStack {
                             Text("Exercises").font(.system(size: 25, weight: .bold))
                                 .foregroundColor(.white)
@@ -560,10 +608,18 @@ struct UserPageView: View {
 
                                 }
                                 }) {
-                                    Image(systemName: "plus.circle.fill")
+                                    Text("Add")
+                                        .bold()
+                                        .frame(width:UIScreen.main.bounds.width/5,height:30)
+                                        .background(Color("Color2"))
                                         .foregroundColor(.white)
+                                        .cornerRadius(5)
                                 }.buttonStyle(BorderlessButtonStyle())
                         }.listRowBackground(Color("Color"))
+                        .padding()
+                        .border(Color("Color4"),width:2)
+                        
+                        
                         
                         //grabs exercises and displays them with the option of deleting via sliding to the left
                         ForEach(exerciselist.items) { item in
@@ -592,8 +648,11 @@ struct UserPageView: View {
                                 Image(systemName: "chevron.left.2")
                                     .foregroundColor(.white)
                             }.listRowBackground(Color("Color"))
+                            .padding()
+                            .border(Color("Color4"),width:2)
                         }
                         .onDelete(perform: deleteExercise)
+                        }.frame(width: UIScreen.main.bounds.width)
                     }//.frame(maxWidth:.infinity)
                 }
                 .navigationBarTitle("FitFriends", displayMode: .inline)
