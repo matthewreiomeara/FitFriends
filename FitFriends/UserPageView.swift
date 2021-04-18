@@ -649,7 +649,7 @@ struct UserPageView: View {
                             .border(Color("Color4"),width:2)
                         }
                         .onDelete(perform: deleteExercise)
-                        }.frame(width: UIScreen.main.bounds.width)
+                        }.frame(width: UIScreen.main.bounds.width+30)
                     }//.frame(maxWidth:.infinity)
                 }
                 .navigationBarTitle("FitFriends", displayMode: .inline)
