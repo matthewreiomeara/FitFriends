@@ -36,13 +36,21 @@ struct UserPageView: View {
     //formats date for UI purposes
     @State var caloriesHit: Int = 0
     @State var caloriesHitString: String = ""
+    @State var caloriesHitFloat: CGFloat = 0
+    
     @State var calorieGoalString: String = ""
     @State var calorieGoal: Int = 0
-    @State var caloriesHitFloat: CGFloat = 0
     @State var calorieGoalFloat: CGFloat = 0
+    
+    @State var caloriesRemovedString: String = ""
+    @State var caloriesRemoved: Int = 0
+    @State var caloriesRemovedFloat: CGFloat = 0
+    
+
     @State var percentageToInt: Int = 0
     @State var finalPercentage: CGFloat = 0
     @State var addedCals : Int = 0
+    @State var removedCals : Int = 0
     
     //@State var roleModel: String = ""
     
@@ -157,8 +165,12 @@ struct UserPageView: View {
                                                 }
                                                 
                                                 caloriesHit = sum
+                                                //print(caloriesHit)
                                                 
                                                 calorieGoal = Int(goal) ?? 0
+
+                                                
+                                                
                                                 
                                                 
                                             }
@@ -329,6 +341,62 @@ struct UserPageView: View {
                                             .foregroundColor(.white)
                                     }
                                 }
+                                //non completed stack for removing calories if implemented
+                               // HStack {
+//                                    Text("Remove Calories:")
+//                                        .bold()
+//                                        .font(.system(size: 15))
+//                                        .frame(width:UIScreen.main.bounds.width/4,height:25)
+//                                        .foregroundColor(.white)
+//
+//                                    TextField("0", text: self.$caloriesRemovedString)
+//                                        .modifier(PlaceholderStyle(showPlaceHolder: caloriesRemovedString.isEmpty, placeholder: "0"))
+//                                        .foregroundColor(.white)
+//                                        .keyboardType(.numberPad)
+//                                        .onReceive(Just(caloriesRemovedString)) { newValue in
+//                                            let filtered = newValue.filter { "0123456789".contains($0) }
+//                                            if filtered != newValue {
+//                                                self.caloriesRemovedString = filtered
+//                                            }
+//                                        }
+//                                        .frame(width: UIScreen.main.bounds.width/10)
+//                                        .padding(.leading,-10)
+//                                    Button(action: {
+//                                        //grab string int and turn into int or 0
+//                                        self.removedCals = Int(caloriesHitString) ?? 0
+//                                        //turn both inputs into float
+//                                        self.caloriesRemovedFloat = CGFloat(removedCals)
+//                                        self.calorieGoalFloat = CGFloat(calorieGoal)
+//                                        //get percentage
+//                                        self.finalPercentage = (caloriesRemovedFloat/calorieGoalFloat) + finalPercentage/100
+//                                        //turn percentage into correct float
+//                                        self.finalPercentage = finalPercentage * 100
+//                                        //grab calories inputted
+//                                        //self.caloriesHit
+//                                        self.caloriesHit = caloriesHit - removedCals
+//                                        self.caloriesHitString = ""
+//
+//                                        var mes = ""
+//                                        let addGroup = DispatchGroup()
+//                                        addGroup.enter()
+//                                        addOldCalories(token,text1, addedCals, "a", "b"){ response in
+//                                            //Saves the response as a dictionary
+//                                            mes = response
+//
+//                                            addGroup.leave()
+//                                         }
+//
+//                                        addGroup.notify(queue: .main) {
+//                                            //Update some textfield using the dailyInfo
+//                                            print("THIS : " + mes)
+//                                         }
+//
+//                                    }) {
+//                                        Image(systemName: "plus.circle.fill")
+//                                            .foregroundColor(.white)
+//                                    }
+//                                }
+                              
                                 .padding(.bottom,10)
                             }.padding(.trailing,UIScreen.main.bounds.width/12)
                             VStack{
@@ -550,6 +618,13 @@ struct UserPageView: View {
                 calorieGoalString = goal
                 
                 calorieGoal = Int(goal) ?? 0
+                //print(calorieGoal)
+                self.caloriesHitFloat = CGFloat(caloriesHit)
+                self.calorieGoalFloat = CGFloat(calorieGoal)
+                //get percentage
+                self.finalPercentage = (caloriesHitFloat/calorieGoalFloat) + finalPercentage/100
+                //turn percentage into correct float
+                self.finalPercentage = finalPercentage * 100
                 
                 
             }
@@ -666,7 +741,7 @@ struct Outline: View {
                         .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center, startAngle: .zero, endAngle: .init(degrees: 360)))
                         .rotationEffect(Angle(degrees: 270))
-                ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+                ).animation(.spring(response: 0.5, dampingFraction: 1.0, blendDuration: 1.0))
         }
     }
 }
