@@ -45,6 +45,21 @@ struct UserProfileView: View {
                             withAnimation {
                                 self.heightSaved = height
                                 self.height = heightSaved
+                                
+                                let group = DispatchGroup()
+                                var msg = ""
+                                group.enter()
+                                setHeight(token, height){
+                                    response in
+                                    msg = response
+                                    group.leave()
+                                }
+                                group.notify(queue: .main)
+                                {
+                                    sheight = height
+
+                                    print("Height " + msg)
+                                }
                             }
                         }){
                         Text("Save")
@@ -72,6 +87,22 @@ struct UserProfileView: View {
                             withAnimation {
                                 self.weightSaved = weight
                                 self.weight = weightSaved
+                                
+                                let group = DispatchGroup()
+                                var msg = ""
+                                group.enter()
+                                setWeight(token, weight){
+                                    response in
+                                    msg = response
+                                    group.leave()
+                                }
+                                group.notify(queue: .main)
+                                {
+                                    sweight = weight
+
+                                    print("Weight " + msg)
+                                }
+                                
                             }
                         }){
                         Text("Save")
@@ -99,6 +130,21 @@ struct UserProfileView: View {
                             withAnimation {
                                 self.genderSaved = gender
                                 self.gender = genderSaved
+                                
+                                let group = DispatchGroup()
+                                var msg = ""
+                                group.enter()
+                                setGender(token, gender){
+                                    response in
+                                    msg = response
+                                    group.leave()
+                                }
+                                group.notify(queue: .main)
+                                {
+                                    sgender = gender
+
+                                    print("Gender " + msg)
+                                }
                             }
                         }){
                         Text("Save")
@@ -115,6 +161,11 @@ struct UserProfileView: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .padding(.top,25)
+            }.onAppear()
+            {
+                height = sheight
+                weight = sweight
+                gender = sgender
             }
             .padding(.top,-(UIScreen.main.bounds.width/5))
             }.padding()

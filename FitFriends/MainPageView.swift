@@ -18,6 +18,9 @@ var model = ""
 var exList = ""
 var calList = ""
 var goal = ""
+var sheight = ""
+var sweight = ""
+var sgender = ""
 
 struct MainPageView: View {
     var body: some View {
@@ -173,6 +176,9 @@ struct Login : View {
                             token = dict["token"]!
                             name = dict["name"]!
                             model = dict["role_model"]!
+                            sheight = dict["height"] ?? ""
+                            sweight = dict["weight"] ?? ""
+                            sgender = dict["gender"] ?? ""
                              myGroup.leave()
                          }
                          
@@ -441,7 +447,7 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([Stri
     var token = ""
     var name = ""
     
-    var dict = ["token": "", "name": "", "role_model": ""]
+    var dict = ["token": "", "name": "", "role_model": "", "height": "", "weight": "", "gender": ""]
     
     if ( isValidEmail(email) && isValidPassword(password) == 0)
     {
@@ -476,9 +482,15 @@ func tryLogin(_ email: String, _ password: String,_ completion: @escaping ([Stri
                             token = json["Token"].string ?? ""
                             name = json["data"]["name"].string ?? ""
                             let model = json["data"]["role_model"].string ?? ""
+                            let h = json["data"]["height"].string ?? ""
+                            let w = json["data"]["weight"].string ?? ""
+                            let g = json["data"]["gender"].string ?? ""
                             dict["token"] = token
                             dict["name"] = name
                             dict["role_model"] = model
+                            dict["height"] = h
+                            dict["weight"] = w
+                            dict["gender"] = g
                             completion(dict)
                             //You can send them to the user page at this point
                         }
