@@ -134,7 +134,7 @@ struct RegistrationPageView: View {
                         .padding(.horizontal,20)
                         .padding(.bottom,40)
                         .background(Color.white)
-                        .cornerRadius(10)
+                        .cornerRadius(5)
                         .padding(.top,25)
                         
                         //button for signup
@@ -175,10 +175,9 @@ struct RegistrationPageView: View {
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 100)
                         }.background(Color.init("Color"))
-                        .cornerRadius(8)
+                        .cornerRadius(5)
                         .offset(y: -40)
                         .padding(.bottom,-40)
-                        .shadow(radius: 25)
 
 
                 }

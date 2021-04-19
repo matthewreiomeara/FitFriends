@@ -162,7 +162,7 @@ struct Login : View {
                     .padding(.horizontal,20)
                     .padding(.bottom,40)
                     .background(Color.white)
-                    .cornerRadius(10)
+                    .cornerRadius(5)
                     .padding(.top,25)
                     
 //========================================================
@@ -252,10 +252,10 @@ struct Login : View {
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width / 1.5)
                     }.background(Color.init("Color"))
-                    //.cornerRadius(8)
+                    .cornerRadius(5)
                     .offset(y: -40)
                     .padding(.bottom,-40)
-                    .shadow(radius: 25)
+                    
     
         
                 }
