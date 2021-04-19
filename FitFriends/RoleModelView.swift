@@ -106,7 +106,7 @@ struct RoleModelView: View {
                                 
                                 var message = ""
                                 aGroup.enter()
-                                setRoleModel(token,"Beginner") { response in
+                                setRoleModel(token,"Intermediate") { response in
                                     //Saves the response as a dictionary
                                     message = response
                                     aGroup.leave()
@@ -160,7 +160,7 @@ struct RoleModelView: View {
                                 
                                 var message = ""
                                 aGroup.enter()
-                                setRoleModel(token,"Beginner") { response in
+                                setRoleModel(token,"Advanced") { response in
                                     //Saves the response as a dictionary
                                     rmodel = 3
                                     message = response
