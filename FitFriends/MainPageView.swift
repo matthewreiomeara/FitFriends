@@ -345,7 +345,7 @@ struct LoadView : View {
 
         VStack(spacing: 28) {
             Circle()
-                .stroke(AngularGradient(gradient: .init(colors:[Color.primary,Color.primary.opacity(0)]), center: .center))
+                .stroke(AngularGradient(gradient:.init(colors: [Color("Color"),Color("Color2"),Color("Color3")]), center: .center), style: StrokeStyle(lineWidth: 5, lineCap: .round))
                 .frame(width: 80, height: 80)
                 .rotationEffect(.init(degrees: animate ? 360 : 0))
             Text(placeHolder)

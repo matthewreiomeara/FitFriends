@@ -94,9 +94,9 @@ struct RegistrationPageView: View {
                                     .frame(width:15, height:18)
                                     .foregroundColor(.black)
                                 if self.visible1{
-                                    TextField("Password", text: self.$pass).autocapitalization(.none)
+                                    TextField("Enter Password", text: self.$pass).autocapitalization(.none)
                                 } else {
-                                    SecureField("Password", text: self.$pass).autocapitalization(.none)
+                                    SecureField("Enter Password", text: self.$pass).autocapitalization(.none)
                                 }
                                 Button(action: {
                                     self.visible1.toggle()
