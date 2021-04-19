@@ -43,7 +43,7 @@ struct RegistrationPageView: View {
                             .foregroundColor(!self.show ? .black : .white)
                             .fontWeight(.bold)
                             .padding(.vertical,10)
-                            .frame(width: (UIScreen.main.bounds.width - 50)/2)
+                            .frame(width: (UIScreen.main.bounds.width/2.5))
                         
                     }.background(!self.show ? Color.white: Color.clear)
                     .clipShape(Capsule())
@@ -55,7 +55,7 @@ struct RegistrationPageView: View {
                             .foregroundColor(self.show ? .black : .white)
                             .fontWeight(.bold)
                             .padding(.vertical,10)
-                            .frame(width: (UIScreen.main.bounds.width - 50)/2)
+                            .frame(width: (UIScreen.main.bounds.width/2.5))
                         
                     }.background(self.show ? Color.white: Color.clear)
                     .clipShape(Capsule())
@@ -75,7 +75,7 @@ struct RegistrationPageView: View {
                                 TextField("Enter Username", text: self.$user).autocapitalization(.none)
                             }.padding(.vertical, 10)
                             
-                            Divider()
+                            Divider().background(Color("Color"))
                             //horizontal stack for email address box
                             HStack(spacing: 15){
                                 Image(systemName: "envelope")
@@ -85,7 +85,7 @@ struct RegistrationPageView: View {
                                 TextField("Enter Email Address", text: self.$email).autocapitalization(.none)
                             }.padding(.vertical, 10)
                             
-                            Divider()
+                            Divider().background(Color("Color"))
                             
                             //horizontal stack for password box
                             HStack(spacing: 15){
@@ -106,7 +106,7 @@ struct RegistrationPageView: View {
                                 }
                             }.padding(.vertical, 10)
                             
-                            Divider()
+                            Divider().background(Color("Color"))
                             
                             //horizontal stack for re-enter password box
                             HStack(spacing: 15){
@@ -127,7 +127,7 @@ struct RegistrationPageView: View {
                                 }
                             }.padding(.vertical, 10)
                             
-                            Divider()
+                            Divider().background(Color("Color"))
                         }
                         //add padding vertical stack holding email,pass,re-enter
                         .padding(.vertical)

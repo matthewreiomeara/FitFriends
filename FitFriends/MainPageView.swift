@@ -86,6 +86,7 @@ struct Login : View {
                 Image("Logo")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.width/2, height:UIScreen.main.bounds.height/4.5)
+                    .padding(.top,-(UIScreen.main.bounds.width/5))
                 
                 //horizontal stack holding existing and new buttons
                 HStack{
@@ -97,7 +98,7 @@ struct Login : View {
                             .foregroundColor(!self.show ? .black : .white)
                             .fontWeight(.bold)
                             .padding(.vertical,10)
-                            .frame(width: (UIScreen.main.bounds.width - 50)/2)
+                            .frame(width: (UIScreen.main.bounds.width/2.5))
                         
                     }.background(!self.show ? Color.white: Color.clear)
                     .clipShape(Capsule())
@@ -111,7 +112,7 @@ struct Login : View {
                             .foregroundColor(self.show ? .black : .white)
                             .fontWeight(.bold)
                             .padding(.vertical,10)
-                            .frame(width: (UIScreen.main.bounds.width - 50)/2)
+                            .frame(width: (UIScreen.main.bounds.width/2.5))
                         
                     }.background(self.show ? Color.white: Color.clear)
                     .clipShape(Capsule())
@@ -132,7 +133,7 @@ struct Login : View {
                             TextField("Email Address", text: self.$user).autocapitalization(.none)
                         }.padding(.vertical, 20)
                         
-                        Divider()
+                        Divider().background(Color("Color"))
                         
                         //horizontal stack holding password
                         HStack(spacing: 15){
@@ -154,7 +155,7 @@ struct Login : View {
                             }
                         }.padding(.vertical, 20)
                         
-                        Divider()
+                        Divider().background(Color("Color"))
                     }
                     //add padding around vertical stack holding email and password
                     .padding(.vertical)
@@ -251,7 +252,7 @@ struct Login : View {
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width / 1.5)
                     }.background(Color.init("Color"))
-                    .cornerRadius(8)
+                    //.cornerRadius(8)
                     .offset(y: -40)
                     .padding(.bottom,-40)
                     .shadow(radius: 25)
@@ -288,7 +289,6 @@ struct Login : View {
 
 
 struct ViewError : View {
-    @State var color = Color.black.opacity(0.75)
     @Binding var alert : Bool
     @Binding var error : String
 
@@ -299,7 +299,9 @@ struct ViewError : View {
                     Text("Error")
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(self.color)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
 
                     Spacer()
                 }
@@ -307,7 +309,7 @@ struct ViewError : View {
                 .padding(.horizontal)
 
                 Text(self.error)
-                    .foregroundColor(self.color)
+                    .foregroundColor(.black)
                     .padding(.top)
                     .padding(.horizontal)
                     .fixedSize(horizontal: false, vertical: true)
@@ -333,7 +335,7 @@ struct ViewError : View {
 
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(Color.black.opacity(0.35).edgesIgnoringSafeArea(.all))
+        .background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -345,20 +347,20 @@ struct LoadView : View {
 
         VStack(spacing: 28) {
             Circle()
-                .stroke(AngularGradient(gradient:.init(colors: [Color("Color"),Color("Color2"),Color("Color3")]), center: .center), style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                .frame(width: 80, height: 80)
+                .stroke(AngularGradient(gradient:.init(colors: [Color("Color"),Color("Color2"),Color("Color3")]), center: .center), style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                .frame(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3)
                 .rotationEffect(.init(degrees: animate ? 360 : 0))
             Text(placeHolder)
                 .fontWeight(.bold)
 
         }
-        .padding(.vertical,25)
-        .padding(.horizontal,35)
+        .padding(.vertical,UIScreen.main.bounds.width/8)
+        .padding(.horizontal,UIScreen.main.bounds.width/8)
         .background(BlurView())
         .cornerRadius(20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            Color.primary.opacity(0.35).onTapGesture {
+            Color.primary.opacity(0.5).onTapGesture {
                 withAnimation{
                     show.toggle()
                 }
