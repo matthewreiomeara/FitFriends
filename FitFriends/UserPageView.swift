@@ -810,19 +810,6 @@ class Exercise: ObservableObject {
         items.append(exercise)
     }
 
-    func remove(exercise: exerciseItem)-> Int {
-        if let index = items.firstIndex(of: exercise) {
-            //items.remove(at: index)
-            print("hello1")
-            return items.remove(at: index).id
-        }
-        return 0
-    }
-    
-    func removeByID(exercise: exerciseItem) {
-        //items.remove(exercise)
-        //items.
-    }
     
     func removeAll()
     {
