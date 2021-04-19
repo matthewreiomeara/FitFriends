@@ -83,7 +83,7 @@ struct RoleModelView: View {
                 .padding(.bottom,UIScreen.main.bounds.height/28)
 
                 
-                Divider()
+                Divider().background(Color("Color4"))
                 
                 HStack{
                     VStack {
@@ -136,7 +136,7 @@ struct RoleModelView: View {
                 .padding(.top,UIScreen.main.bounds.height/32)
                 .padding(.bottom,UIScreen.main.bounds.height/32)
                 
-                Divider()
+                Divider().background(Color("Color4"))
                 
                 HStack{
                     VStack {
@@ -189,7 +189,7 @@ struct RoleModelView: View {
                 }.padding(.top,UIScreen.main.bounds.height/32)
                 .padding(.bottom,UIScreen.main.bounds.height/32)
                 
-                Divider()
+                Divider().background(Color("Color4"))
                 
                 HStack{
                     Text("").frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width/5)

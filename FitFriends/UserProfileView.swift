@@ -20,7 +20,7 @@ struct UserProfileView: View {
     var body: some View {
         ZStack{
         //background color
-            Color("Color").ignoresSafeArea(.all)
+            LinearGradient(gradient: .init(colors: [Color("Color"),Color("Color2"),Color("Color3")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack {
         //FitFriends logo
             Image("Logo")
@@ -71,7 +71,7 @@ struct UserProfileView: View {
                         }.buttonStyle(BorderlessButtonStyle())
                     }.padding(.vertical, 20)
                     
-                    Divider()
+                    Divider().background(Color("Color"))
                     
                     //horizontal stack holding weight and save button
                     HStack(spacing: 15){
@@ -114,7 +114,7 @@ struct UserProfileView: View {
                         }.buttonStyle(BorderlessButtonStyle())
                     }.padding(.vertical, 20)
 
-                    Divider()
+                    Divider().background(Color("Color"))
                     
                     //horizontal stack holding gender and save button
                     HStack(spacing: 15){
